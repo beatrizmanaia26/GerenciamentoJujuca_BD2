@@ -22,7 +22,7 @@ Esse projeto tem como intuito fornecer uma organização do comércio da doceria
  Esse banco de dados foi escolhido para armazenar informações dos produtos, escolhemos esse banco devido ao conhecimento prévio que possuímos 
 
  ### BD3 Não Relacional (NoSQL): Cassandra
- Escolhemos esse banco para armazenar histórico de compra da loja pois esse banco é muito bom para isso.
+ Escolhemos esse banco para armazenar histórico de compra da loja e do histórico de estoque dos produtos, esoclhemos esse banco pois ele  é muito bom para isso.
 
 ## Como executar o projeto
 
