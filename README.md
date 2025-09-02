@@ -70,11 +70,30 @@ TEM PROBLEMA NAO TER RELAÇÃO ENTRE TABELAS DO MESMO BD?????????
 
   (print disso dentro do cassandra)
 
+## Como desenvolvemos esse projeto:
+
+1-Criar projeto de SpringBoot no Spring Initializer 
+
+  Utilizaremos o spring Initializer pois ele:
+
+    -Gera a estrutura correta de pastas e arquivos necesários para o projeto.
+
+    -Configura automaticamente o pom.xml (arquivo de configuração central do Maven, que é uma ferramenta de automação de build e gerenciamento de dependências para projetos Java)
+
+    -Adiciona as dependências necessárias do SpringBoot.
+
+  a)acessamos esse link: https://start.spring.io/
+
+  b)Configuramos o projeto maven e dependências
+  (escolhemos o maven pois é mais facil para quem tem pouca experiência com o spring boot)
+
+  c)baixamos o zip, descompactamos e colocamos na pasta desse repositório
+
 ## Como executar o projeto
 
 ### Serviços e recursos utilizados:
 
-1-configurar bancos de dados que serão utilizados:
+#### configurar bancos de dados que serão utilizados:
 
 a)Cassanda (para windows)
 	-Criar conta nesse link: https://astra.datastax.com/org/b967d83c-1d32-4c30-a883-d418dd8a576c/database
@@ -86,7 +105,7 @@ b)MongoDB
 c)Supabase(PostGreeSQL)
 -
 
-2-Criação manual das tabelas que serão utilizadas:
+-Criação manual das tabelas que serão utilizadas nos bancos:
 
 a) Cassandra
     -Criar database com nome: ProjetoJujucaCassandra
@@ -107,7 +126,7 @@ b) MongoDB
 c) Supabase
     -Como usaremos springboot, ele criará as tabelas para nós.
 
-### Como rodar:
+### Como rodar: = como executar????
 
 Rodaremos o front-end e o back-end de maneira local. Já para os bancos de dados, utilizaremos DBSaaS (Database as a service), para banco de dados relacional, usaremos PostgreSQL no Supabase, para os banco de dados não sequenciais, utilizarems Cassandra no Datastax e MongoDB no Atlas.
 
