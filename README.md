@@ -11,10 +11,7 @@ Integrantes:
 ![codigo1](./imagens/estruturaProjeto.png)
 
 -S1: 
-É serviço de front-end de HTML e CSS que deve fazer requisições ao serviço S2. Estas requisições podem conter tanto dados fictícios que serão armazenados no bancos como requisições de dados que estão nos bancos e que devem ser retornadas. Os dados fictícios gerados devem ser de pelo menos 3 tipos diferentes, sendo que cada um deles será armazenado em um banco diferente. O serviço S1 deve armazenar todos as respostas de 
-
-
-
+É serviço de front-end de HTML e CSS que deve fazer requisições ao serviço S2. Estas requisições podem conter tanto dados fictícios que serão armazenados no bancos como requisições de dados que estão nos bancos e que devem ser retornadas. Os dados fictícios gerados devem ser de pelo menos 3 tipos diferentes, sendo que cada um deles será armazenado em um banco diferente. O serviço S1 deve armazenar todos as respostas de  S2 junto com as requisições realizadas para verificação do funcionamento de S1.
 
 ## Tema:
 
@@ -22,29 +19,55 @@ Esse projeto tem como intuito fornecer uma organização do comércio da doceria
 
 ## Como Serviço 2 será implementado:
 
-S2 será implementado para CRUD dos bancos, inserção e busca de dados de acordo com o que cada banco é responsável por armazenar. Assim, será dividido em 3 serviços: um para crud cliente e do vendedor (dados do banco de dados relacional), um para CRUD produto e uma para CRUD da compra.
-Ele gera requisições sobre CRUD de clientes, vendedores e produtos, além da compra de produtos por clientes.
+S2 será implementado para CRUD dos bancos, inserção e busca de dados de acordo com o que cada banco é responsável por armazenar. 
+Assim, será dividido em 3 serviços: um para crud cliente e do vendedor (dados do banco de dados relacional), um para CRUD produto (banco de dados nao relacional, mongoDB) e uma para CRUD da compra (banco de dados nao relacionao Cassandra).
 
 -linguagens utilizadas para comunicar com cada banco de dados:
-    BD1 Supabase(PostGree): Java <br>
-    BD2 MongoDB: Java <br>
+    BD1 Supabase(PostGree): Java + Springboot<br>
+    BD2 MongoDB: Java <br> ?????? mto ruim?
     BD3 Cassandra: Java
 
 ## Bancos de dados:
  
  ### (RDB) Banco de dados Relacional (SQL): Supabase (PostgreeSQL)
- Escolhemos esse banco de dados para guardar todas as informações referentes aos clientes e vendedores, afinal são dados bem estruturados e com várias características semelhantes, o Postgree também foi escolhido dentre todas as opções de bancos relacionais devido ao conhecimento básico que possuímos desse banco.
+ Escolhemos esse banco de dados para guardar todas as informações referentes aos clientes e vendedores, afinal são dados bem estruturados e com várias características semelhantes, o Postgree também foi escolhido dentre todas as opções de bancos relacionais devido ao conhecimento básico que possuímos desse banco e a maior facilitar de 3 integrantes do grupo utilizarem ele do queo proprio PostgreSQL.
 
- #### Modelo Entidade Relacionamento:
+ #### Dados armazenados e como armazenar:
 
- ![codigo1](./imagens/merjujuca.png)
+ ##### Modelo Entidade Relacionamento:
+
+TEM PROBLEMA NAO TER RELAÇÃO ENTRE TABELAS DO MESMO BD?????????
+
+ ![codigo1](./imagens/merjujuca.png) TROCAR???? CEP/NUMERO
+ pessoa (mesma pessoa pode vender e comprar)
+
+ ##### Modelo Relacionar 3 Forma Normal:
+
+  ![codigo1](./imagens/MR3FNjujuca.png) 
 
  ### (DB1) Banco de dados 2 Não Relacional (NoSQL): MongoDB
 
  Esse banco de dados foi escolhido para armazenar informações dos produtos, escolhemos esse banco devido ao conhecimento prévio que possuímos.
 
+ #### Dados armazenados e como armazenar:  AJUSTAR COM PRINT DO MONGO  
+
+ estrutura do json, chave valor (chave:tipo)
+ {"_id": "ObjectId", "nome": string, 'valor":foat}...
+ *mongo fala estrutura e armazeno um dado ele se vira, mas posso definir tipo dele do lado
+
+![codigo1](./imagens/dadoProduto.png) 
+
  ### (DB2) Banco de dados 3 Não Relacional (NoSQL): Cassandra
  Escolhemos esse banco para armazenar histórico de compra da loja e do histórico de estoque dos produtos, escolhemos esse banco pois ele é muito bom para isso.
+
+  #### Dados armazenados e como armazenar:   JÁ FAZER NO CASSANDRA??
+  -Só a tabela, sem a relação: colocar chave de 
+  agrupamento e de parcelamento
+
+ ![codigo1](./imagens/dadoHistorico.png) 
+ cliente é chave de parcelamento
+
+  (print disso dentro do cassandra)
 
 ## Como executar o projeto
 
@@ -54,14 +77,36 @@ Ele gera requisições sobre CRUD de clientes, vendedores e produtos, além da c
 
 a)Cassanda (para windows)
 	-Criar conta nesse link: https://astra.datastax.com/org/b967d83c-1d32-4c30-a883-d418dd8a576c/database
-	-Criar database com nome: ProjetoJujucaCassandra
+
 
 b)MongoDB 
-- crie uma conta nesse link: https://www.mongodb.com/cloud/atlas/register e crie um cluster 
-- no lado esquerdo, clique em  “Projeto overview” e onde aparecer “cluster” clique em “browser collections”
--dentro do seu cluster, crie um database para o projeto 
-    -Database name: ProjetoJujucaMongo
-    -Collection Name: ProdutosJujuca
-(é nessa coleção que será realizado o CRUD dos produtos)
+- crie uma conta nesse link: https://www.mongodb.com/cloud/atlas/register 
 
 c)Supabase(PostGreeSQL)
+-
+
+2-Criação manual das tabelas que serão utilizadas:
+
+a) Cassandra
+    -Criar database com nome: ProjetoJujucaCassandra
+
+    -Inserção de dados será conforme usuario interage com a aplicacao (e script?????)
+
+b) MongoDB
+    -crie um cluster 
+    -no lado esquerdo, clique em  “Projeto overview” e onde aparecer “cluster” clique em “browser collections”
+    -dentro do seu cluster, crie um database para o projeto 
+        -Database name: ProjetoJujucaMongo
+        -Collection Name: ProdutosJujuca
+    (é nessa coleção que será realizado o CRUD dos produtos, por isso é preciso deixar as collections vazias pois os dados serõ inseridos
+
+    *CRIO COlECAO vazia, sem estruturae quando crio codigo pra jogar dados pra la, verifico tipo dos dados
+    (conforme usuario interage na apicacao e script???)
+
+c) Supabase
+    -Como usaremos springboot, ele criará as tabelas para nós.
+
+### Como rodar:
+
+Rodaremos o front-end e o back-end de maneira local. Já para os bancos de dados, utilizaremos DBSaaS (Database as a service), para banco de dados relacional, usaremos PostgreSQL no Supabase, para os banco de dados não sequenciais, utilizarems Cassandra no Datastax e MongoDB no Atlas.
+
