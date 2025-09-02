@@ -20,7 +20,8 @@ Esse projeto tem como intuito fornecer uma organização do comércio da doceria
 ## Como Serviço 2 será implementado:
 
 S2 será implementado para CRUD dos bancos, inserção e busca de dados de acordo com o que cada banco é responsável por armazenar. 
-Assim, será dividido em 3 serviços: um para crud cliente e do vendedor (dados do banco de dados relacional), um para CRUD produto (banco de dados nao relacional, mongoDB) e uma para CRUD da compra (banco de dados nao relacionao Cassandra).
+
+Assim, será dividido em 3 serviços, um para cada banco de dados. O primeiro, crud cliente e do vendedor (dados do banco de dados relacional), um para CRUD produto (banco de dados nao relacional, mongoDB) e uma para CRUD da compra (banco de dados nao relacionao Cassandra).
 
 -linguagens utilizadas para comunicar com cada banco de dados:
     BD1 Supabase(PostGree): Java + Springboot<br>
