@@ -25,7 +25,7 @@ Assim, será dividido em 3 serviços, um para cada banco de dados. O primeiro, c
 
 -linguagens utilizadas para comunicar com cada banco de dados:
     BD1 Supabase(PostGree): Java + Springboot<br>
-    BD2 MongoDB: Java <br> ?????? mto ruim?
+    BD2 MongoDB: Java <br> ->olhar classe record!!!
     BD3 Cassandra: Java
 
 ## Bancos de dados:
@@ -36,8 +36,6 @@ Assim, será dividido em 3 serviços, um para cada banco de dados. O primeiro, c
  #### Dados armazenados e como armazenar:
 
  ##### Modelo Entidade Relacionamento:
-
-TEM PROBLEMA NAO TER RELAÇÃO ENTRE TABELAS DO MESMO BD?????????
 
  ![codigo1](./imagens/merjujuca.png) TROCAR???? CEP/NUMERO
  pessoa (mesma pessoa pode vender e comprar)
@@ -126,7 +124,7 @@ b) MongoDB
 c) Supabase
     -Como usaremos springboot, ele criará as tabelas para nós.
 
-### Como rodar: = como executar????
+### Como rodar:
 
 Rodaremos o front-end e o back-end de maneira local. Já para os bancos de dados, utilizaremos DBSaaS (Database as a service), para banco de dados relacional, usaremos PostgreSQL no Supabase, para os banco de dados não sequenciais, utilizarems Cassandra no Datastax e MongoDB no Atlas.
 
