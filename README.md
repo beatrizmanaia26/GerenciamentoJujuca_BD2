@@ -32,7 +32,8 @@ Assim, será dividido em 3 serviços, um para cada banco de dados. O primeiro, c
 ## Bancos de dados:
  
  ### (RDB) Banco de dados Relacional (SQL): Supabase (PostgreeSQL)
- Escolhemos esse banco de dados para guardar todas as informações referentes aos clientes e vendedores, afinal são dados bem estruturados e com várias características semelhantes, o Postgree também foi escolhido dentre todas as opções de bancos relacionais devido ao conhecimento básico que possuímos desse banco e a maior facilitar de 3 integrantes do grupo utilizarem ele do queo proprio PostgreSQL.
+ Escolhemos guardar em um banco de dados relacional as informações referentes aos clientes e vendedores, afinal são dados bem estruturados que possuem relacionamentos entre si e tem várias características semelhantes. 
+ Já a escolha do Supabase(Postgree) dentre todas as opções de bancos relacionais devido ao conhecimento básico que possuímos desse banco e a maior facilitar de 3 integrantes do grupo utilizarem ele do queo proprio PostgreSQL.
 
  #### Dados armazenados e como armazenar:
 
@@ -47,7 +48,9 @@ Assim, será dividido em 3 serviços, um para cada banco de dados. O primeiro, c
 
  ### (DB1) Banco de dados 2 Não Relacional (NoSQL): MongoDB
 
- Esse banco de dados foi escolhido para armazenar informações dos produtos, escolhemos esse banco devido ao conhecimento prévio que possuímos.
+Esse banco de dados foi escolhido para armazenar informações dos produtos pois da a possibilidade de cada produto ter sua propria estrutura
+
+E escolhemos o MongoDb dentro de todas as opções de bancos n~so relacionais devido ao conhecimento prévio que possuímos.
 
  #### Dados armazenados e como armazenar:  AJUSTAR COM PRINT DO MONGO  
 
@@ -58,7 +61,8 @@ Assim, será dividido em 3 serviços, um para cada banco de dados. O primeiro, c
 ![codigo1](./imagens/dadoProduto.png) 
 
  ### (DB2) Banco de dados 3 Não Relacional (NoSQL): Cassandra
- Escolhemos esse banco para armazenar histórico de compra da loja e do histórico de estoque dos produtos, escolhemos esse banco pois ele é muito bom para isso.
+ 
+ Escolhemos esse banco para armazenar histórico de compra da loja e do histórico de estoque dos produtos, pois o Cassnadra é muito bom para essa finalidade.
 
   #### Dados armazenados e como armazenar:   JÁ FAZER NO CASSANDRA??
   -Só a tabela, sem a relação: colocar chave de 
