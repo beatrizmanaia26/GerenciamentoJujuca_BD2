@@ -125,6 +125,8 @@ b) MongoDB
 c) Supabase
     -Como usaremos springboot, ele criará as tabelas para nós.
 
+-retorno pro front: retorna json pro front usando spring
+
 ### Como rodar:
 
 Rodaremos o front-end e o back-end de maneira local. Já para os bancos de dados, utilizaremos DBSaaS (Database as a service), para banco de dados relacional, usaremos PostgreSQL no Supabase, para os banco de dados não sequenciais, utilizarems Cassandra no Datastax e MongoDB no Atlas.
