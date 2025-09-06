@@ -12,6 +12,7 @@ Integrantes:
 
 -S1: 
 É serviço de front-end de HTML e CSS que deve fazer requisições ao serviço S2. Estas requisições podem conter tanto dados fictícios que serão armazenados no bancos como requisições de dados que estão nos bancos e que devem ser retornadas. Os dados fictícios gerados devem ser de pelo menos 3 tipos diferentes, sendo que cada um deles será armazenado em um banco diferente. O serviço S1 deve armazenar todos as respostas de  S2 junto com as requisições realizadas para verificação do funcionamento de S1.
+-retorno pro front: retorna json pro front usando spring.
 
 ## Tema:
 
@@ -125,7 +126,6 @@ b) MongoDB
 c) Supabase
     -Como usaremos springboot, ele criará as tabelas para nós.
 
--retorno pro front: retorna json pro front usando spring
 
 ### Como rodar:
 
