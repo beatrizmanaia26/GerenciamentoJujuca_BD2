@@ -64,6 +64,7 @@ Assim, será dividido em 3 serviços, um para cada banco de dados. O primeiro, c
   agrupamento e de parcelamento
 
  ![codigo1](./imagens/dadoHistorico.png) 
+ -produto = array id de produto
  cliente é chave de parcelamento
 
   (print disso dentro do cassandra)
