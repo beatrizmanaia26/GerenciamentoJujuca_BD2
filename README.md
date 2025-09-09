@@ -56,7 +56,7 @@ E escolhemos o MongoDb dentro de todas as opções de bancos n~so relacionais de
 
  #### Dados armazenados e como armazenar:  AJUSTAR COM PRINT DO MONGO  
 
-![codigo1](./imagens/dadoProdutoMongo.png) 
+![codigo1](./imagens/dadosProdutoMongo.png) 
 
  {"_id": "ObjectId", "nome": string, 'valor":foat}...
  *mongo fala estrutura e armazeno um dado ele se vira, mas posso definir tipo dele do lado
