@@ -39,7 +39,9 @@ Assim, será dividido em 3 serviços, um para cada banco de dados. O primeiro, c
 
  ##### Modelo Entidade Relacionamento:
 
- ![codigo1](./imagens/merjujuca.png) TROCAR???? CEP/NUMERO
+ ![codigo1](./imagens/merjujuca.png)
+ 
+  CEP/NUMERO
  pessoa (mesma pessoa pode vender e comprar)
 
  ##### Modelo Relacionar 3 Forma Normal:
@@ -107,7 +109,47 @@ b)MongoDB
 - crie uma conta nesse link: https://www.mongodb.com/cloud/atlas/register 
 
 c)Supabase(PostGreeSQL)
--
+-Abrir o link: https://supabase.com/dashboard/new/wawxvgvnefwlhzkrdnfz
+-Criams um projeto com nome: Projetojujuca
+-No SQL Editor coloque esse codigo para criar as tabelas:
+
+```sql
+-- Apagar todas as tabelas considerando dependências
+drop table if exists Pessoa cascade;
+drop table if exists Cliente cascade;
+drop table if exists Vendedor cascade;
+
+--criar tabelas
+create table Pessoa
+    (cpf	text, 
+    nome	text, 
+    email text,
+    cep text,
+    complemento text,
+    numero_residencia text,
+    primary key (cpf)
+    );
+
+create table Cliente
+    (id_cliente	int, 
+    telefone	text, 
+    cargo text,
+    cpf text, 
+    foreign key (cpf) references Pessoa (cpf), 
+    primary key (id_cliente)
+    );
+
+create table Vendedor
+    (id_vendedor	text, 
+    meta_de_venda	text, 
+    horas_trabalhadas float,
+    cpf text,
+    foreign key (cpf) references Pessoa (cpf), 
+    primary key (id_vendedor)
+    
+    );
+
+```
 
 -Criação manual das tabelas que serão utilizadas nos bancos:
 
