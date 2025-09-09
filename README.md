@@ -56,7 +56,8 @@ E escolhemos o MongoDb dentro de todas as opções de bancos n~so relacionais de
 
  #### Dados armazenados e como armazenar:  AJUSTAR COM PRINT DO MONGO  
 
- estrutura do json, chave valor (chave:tipo)
+![codigo1](./imagens/dadoProdutoMongo.png) 
+
  {"_id": "ObjectId", "nome": string, 'valor":foat}...
  *mongo fala estrutura e armazeno um dado ele se vira, mas posso definir tipo dele do lado
 
@@ -80,13 +81,11 @@ E escolhemos o MongoDb dentro de todas as opções de bancos n~so relacionais de
 
 1-Criar projeto de SpringBoot no Spring Initializer 
 
-  Utilizaremos o spring Initializer pois ele:
+Utilizaremos o spring Initializer pois ele:
 
-    -Gera a estrutura correta de pastas e arquivos necesários para o projeto.
-
-    -Configura automaticamente o pom.xml (arquivo de configuração central do Maven, que é uma ferramenta de automação de build e gerenciamento de dependências para projetos Java)
-
-    -Adiciona as dependências necessárias do SpringBoot.
+  -Gera a estrutura correta de pastas e arquivos necesários para o projeto.<br>
+  -Configura automaticamente o pom.xml (arquivo de configuração central do Maven, que é uma ferramenta de automação de build e gerenciamento de dependências para projetos Java)<br>
+  -Adiciona as dependências necessárias do SpringBoot.
 
   a)acessamos esse link: https://start.spring.io/
 
@@ -106,56 +105,17 @@ a)Cassanda (para windows)
 
 
 b)MongoDB 
-- crie uma conta nesse link: https://www.mongodb.com/cloud/atlas/register 
+-crie uma conta nesse link: https://www.mongodb.com/cloud/atlas/register 
 
 c)Supabase(PostGreeSQL)
 -Abrir o link: https://supabase.com/dashboard/new/wawxvgvnefwlhzkrdnfz
 -Criams um projeto com nome: Projetojujuca
 -No SQL Editor coloque esse codigo para criar as tabelas:
 
-```sql
--- Apagar todas as tabelas considerando dependências
-drop table if exists Pessoa cascade;
-drop table if exists Cliente cascade;
-drop table if exists Vendedor cascade;
-
---criar tabelas
-create table Pessoa
-    (cpf	text, 
-    nome	text, 
-    email text,
-    cep text,
-    complemento text,
-    numero_residencia text,
-    primary key (cpf)
-    );
-
-create table Cliente
-    (id_cliente	int, 
-    telefone	text, 
-    cargo text,
-    cpf text, 
-    foreign key (cpf) references Pessoa (cpf), 
-    primary key (id_cliente)
-    );
-
-create table Vendedor
-    (id_vendedor	text, 
-    meta_de_venda	text, 
-    horas_trabalhadas float,
-    cpf text,
-    foreign key (cpf) references Pessoa (cpf), 
-    primary key (id_vendedor)
-    
-    );
-
-```
-
 -Criação manual das tabelas que serão utilizadas nos bancos:
 
 a) Cassandra
     -Criar database com nome: ProjetoJujucaCassandra
-
     -Inserção de dados será conforme usuario interage com a aplicacao (e script?????)
 
 b) MongoDB
