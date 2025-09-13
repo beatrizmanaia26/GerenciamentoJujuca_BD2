@@ -70,6 +70,8 @@ E escolhemos o MongoDb dentro de todas as opções de bancos não relacionais de
   #### Dados armazenados e como armazenar:   JÁ FAZER NO CASSANDRA??
   -Só a tabela, sem a relação: colocar chave de 
   agrupamento e de parcelamento
+  -chave particp user -> so mostra pro usero dele, chave de agrup oq ela compro
+
 
  ![codigo1](./imagens/dadoHistorico.png) 
  -produto = array id de produto
