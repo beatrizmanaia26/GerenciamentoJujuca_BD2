@@ -52,7 +52,7 @@ Assim, será dividido em 3 serviços, um para cada banco de dados. O primeiro, c
 
 Esse banco de dados foi escolhido para armazenar informações dos produtos pois da a possibilidade de cada produto ter sua propria estrutura
 
-E escolhemos o MongoDb dentro de todas as opções de bancos n~so relacionais devido ao conhecimento prévio que possuímos.
+E escolhemos o MongoDb dentro de todas as opções de bancos não relacionais devido ao conhecimento prévio que possuímos.
 
  #### Dados armazenados e como armazenar:  AJUSTAR COM PRINT DO MONGO  
 
