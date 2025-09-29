@@ -119,6 +119,7 @@ c)Supabase(PostGreeSQL)
 a) Cassandra
     -Criar database com nome: ProjetoJujucaCassandra
     -Inserção de dados será conforme usuario interage com a aplicacao (e script?????)
+    -um integrante do grupo criou o projeto e adicionou os outros como colaboradores
 
 b) MongoDB
     -crie um cluster 
@@ -127,12 +128,14 @@ b) MongoDB
         -Database name: ProjetoJujucaMongo
         -Collection Name: ProdutosJujuca
     (é nessa coleção que será realizado o CRUD dos produtos, por isso é preciso deixar as collections vazias pois os dados serõ inseridos
+    -um integrante do grupo criou o projeto e adicionou os outros como colaboradores
 
     *CRIO COlECAO vazia, sem estruturae quando crio codigo pra jogar dados pra la, verifico tipo dos dados
     (conforme usuario interage na apicacao e script???)
 
 c) Supabase
-    -Como usaremos springboot, ele criará as tabelas para nós.
+    -Como usaremos springboot, ele criará as tabelas para nós, basta criar o projeto com o nome "Projetojujuca"
+    -um integrante do grupo criou o projeto e adicionou os outros como colaboradores
 
 
 ### Como rodar:
