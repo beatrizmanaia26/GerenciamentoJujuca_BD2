@@ -104,6 +104,9 @@ Utilizaremos o spring Initializer pois ele:
 
 a)Cassanda (para windows)
 	-Criar conta nesse link: https://astra.datastax.com/org/b967d83c-1d32-4c30-a883-d418dd8a576c/database
+    -criar um projeto e adicionar integrantes do seu projeto no setting->users com o email que eles usaram prsa criar a conta
+    -Segui passo a passo para conectar no projeto https://astra.datastax.com/org/0002c76a-72f4-4ad7-bae8-9e400dc8af64/database/ca82aef8-88f6-43d3-a70f-3458e95f15ec/connect
+    -em "select a method"escolha "drivers" e "type native"
 
 
 b)MongoDB 
