@@ -8,7 +8,6 @@ public class ManagementsystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ManagementsystemApplication.class, args);
-		System.out.println("Executando...");
 	}
 
 }
