@@ -149,3 +149,6 @@ c) Supabase
 
 Rodaremos o front-end e o back-end de maneira local. Já para os bancos de dados, utilizaremos DBSaaS (Database as a service), para banco de dados relacional, usaremos PostgreSQL no Supabase, para os banco de dados não sequenciais, utilizarems Cassandra no Datastax e MongoDB no Atlas.
 
+-sempre que for executar esse codigo: ir em managementsystem e rodar mvn package no terminal
+-dps roda: java  -cp target/(oq gerar na pasta tsrget) managementsystem (java -jar target/managementsystem-0.0.1-SNAPSHOT.jar)
+-atualize o java: sdk install java 17.0.0-tem
