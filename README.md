@@ -106,6 +106,10 @@ a)Cassanda (para windows)
 	-Criar conta nesse link: https://astra.datastax.com/org/b967d83c-1d32-4c30-a883-d418dd8a576c/database
     -criar um projeto e adicionar integrantes do seu projeto no setting->users com o email que eles usaram prsa criar a conta
     -Segui passo a passo para conectar no projeto https://astra.datastax.com/org/0002c76a-72f4-4ad7-bae8-9e400dc8af64/database/ca82aef8-88f6-43d3-a70f-3458e95f15ec/connect
+	-instalar o maven e colocar a variavel de ambiente com o caminho do download
+	<img width="646" height="64" alt="image" src="https://github.com/user-attachments/assets/5a43f7c7-e44d-455a-b0b6-ffbfce2915fb"
+    -baixar o bundle  colocar no projeto e seu caminho no "cassandraConfig" e baixar o token e colocar o clienteid e secret no cassandraconfig />
+	
     -em "select a method"escolha "drivers" e "type native"
 
 
