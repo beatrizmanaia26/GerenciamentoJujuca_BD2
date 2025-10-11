@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tb_sales")
-public class SalesModel implements Serializable{
+@Table(name = "tb_seller")
+public class SellerModel implements Serializable{
 
     private static final long serialVersionUID = 1L;
 

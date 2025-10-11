@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Formulário de Cadastro de Funcionário</title>
+        <link rel="stylesheet" th:href="@{/css/cadastrar-funcionario.css}">
+    </head>
+    <body>
+        <main class="page">
+            <header class="header">
+                <h2>Formulário de Cadastro de Funcionário</h2>
+                <p class="hint">Preencha os campos e clique em Enviar.</p>
+            </header>
+
+            <section class="card">
+                <form th:action="@{/cadastrar-funcionario}" th:object="${people}" method="post" class="form">
+
+                    <div class="form-grid">
+
+                        <div class="form-row">
+                            <label for="nome">Nome do Funcionário</label>
+                            <input type="text" id="nome" th:field="*{nome}" required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="email">E-mail do Funcionário</label>
+                            <input type="email" id="email" th:field="*{email}" required>
+                        </div>
+
+                        <div class="form-row row-3 full">
+                            <div>
+                                <label for="cpf">CPF</label>
+                                <input type="text" id="cpf" th:field="*{cpf}" required>
+                            </div>
+                            <div>
+                                <label for="password">Senha</label>
+                                <input type="password" id="password" th:field="*{password}" required>
+                            </div>
+                            <div>
+                                <label for="telefone">Telefone</label>
+                                <input type="text" id="telefone" th:field="*{telefone}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row full">
+                            <label for="endereco">Endereço</label>
+                            <input type="text" id="endereco" th:field="*{endereco}" required>
+                        </div>
+
+                        <div class="form-row row-3 full">
+                            <div>
+                                <label for="numero">N°</label>
+                                <input type="number" id="numero" th:field="*{numero}" required>
+                            </div>
+                            <div>
+                                <label for="cep">CEP</label>
+                                <input type="text" id="cep" th:field="*{cep}" required>
+                            </div>
+                            <div>
+                                <label for="complemento">Complemento</label>
+                                <input type="text" id="complemento" th:field="*{complemento}">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="actions">
+                        <input type="submit" value="Enviar">
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <!-- Marcadores das mensagens vindas do RedirectAttributes (não aparecem na tela) -->
+        <div id="flash-sucesso" th:if="${sucesso}" th:data-msg="${sucesso}" hidden></div>
+        <div id="flash-erro"    th:if="${erro}"    th:data-msg="${erro}" hidden></div>
+
+        <!-- JS básico para exibir pop-up com alert() -->
+        <script>
+            (function () {
+                var ok  = document.getElementById('flash-sucesso');
+                var err = document.getElementById('flash-erro');
+
+                if (ok) {
+                    alert(ok.dataset.msg);
+                } else if (err) {
+                    alert(err.dataset.msg);
+                }
+            })();
+        </script>
+    </body>
+</html>

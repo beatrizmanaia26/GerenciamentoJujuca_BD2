@@ -17,6 +17,7 @@ public class PeopleModel implements Serializable{
     private String cep;
     private String complemento;
     private String endereco;
+    private String telefone;
     private int numero;
 
 
@@ -82,5 +83,13 @@ public class PeopleModel implements Serializable{
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 }
