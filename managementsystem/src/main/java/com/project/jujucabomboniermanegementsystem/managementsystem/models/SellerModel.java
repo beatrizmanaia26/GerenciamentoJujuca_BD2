@@ -10,14 +10,16 @@ public class SellerModel implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id_sales;
-    private String metaDeVendas;
-    private String horasTrabalhadas;
-    @ManyToOne
-    @JoinColumn(name = "cpf", referencedColumnName = "cpf")
-    private PeopleModel cpf;
+    @Id // << define o campo como id
+    @GeneratedValue(strategy = GenerationType.AUTO) // << gerador de id
+    private UUID id_sales; // << id do seller
+    private String metaDeVendas; //<< meta de vendas do seller
+    private String horasTrabalhadas; // <<  horas trabalhadas do seller
+    @ManyToOne // << identifica a chave estrangeira
+    @JoinColumn(name = "cpf", referencedColumnName = "cpf") // << define como deve ser feita a relação
+    private PeopleModel cpf; // << cpf do seller
+
+    // Metodos get e setters da classe de Seller
 
     public UUID getId_sales() {
         return id_sales;
