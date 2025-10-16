@@ -1,6 +1,6 @@
 # Gerenciamento Jujuca Bombonier 
 
-Integrantes: 
+Integrantes: <br>
 -Beatriz Manaia Lourenço Berto <br>
 -Rafael Dias Silva Costa<br>
 -Kayky Pires de Paula
@@ -10,8 +10,8 @@ Integrantes:
 
 ![codigo1](./imagens/estruturaProjeto.png)
 
--S1: 
-É serviço de front-end de HTML e CSS que deve fazer requisições ao serviço S2. Estas requisições podem conter tanto dados fictícios que serão armazenados no bancos como requisições de dados que estão nos bancos e que devem ser retornadas. Os dados fictícios gerados devem ser de pelo menos 3 tipos diferentes, sendo que cada um deles será armazenado em um banco diferente. O serviço S1 deve armazenar todos as respostas de  S2 junto com as requisições realizadas para verificação do funcionamento de S1.
+-S1: <br>
+É serviço de front-end de HTML e CSS que deve fazer requisições ao serviço S2. Estas requisições podem conter tanto dados fictícios que serão armazenados no bancos como requisições de dados que estão nos bancos e que devem ser retornadas. Os dados fictícios gerados devem ser de pelo menos 3 tipos diferentes, sendo que cada um deles será armazenado em um banco diferente. O serviço S1 deve armazenar todos as respostas de  S2 junto com as requisições realizadas para verificação do funcionamento de S1.<br>
 -retorno pro front: retorna json pro front usando spring.
 
 ## Tema:
@@ -27,7 +27,7 @@ Assim, será dividido em 3 serviços, um para cada banco de dados. O primeiro, c
 -linguagens utilizadas para comunicar com cada banco de dados:
     BD1 Supabase(PostGree): Java + Springboot<br>
     BD2 MongoDB: Java <br> ->olhar classe record!!!
-    BD3 Cassandra: Java
+    BD3 Cassandra: Java<br>
 
 ## Bancos de dados:
  
@@ -81,20 +81,20 @@ E escolhemos o MongoDb dentro de todas as opções de bancos não relacionais de
 
 ## Como desenvolvemos esse projeto:
 
-1-Criar projeto de SpringBoot no Spring Initializer 
+<br>1-Criar projeto de SpringBoot no Spring Initializer 
 
-Utilizaremos o spring Initializer pois ele:
+<br>Utilizaremos o spring Initializer pois ele:
 
-  -Gera a estrutura correta de pastas e arquivos necesários para o projeto.<br>
-  -Configura automaticamente o pom.xml (arquivo de configuração central do Maven, que é uma ferramenta de automação de build e gerenciamento de dependências para projetos Java)<br>
-  -Adiciona as dependências necessárias do SpringBoot.
+  <br>-Gera a estrutura correta de pastas e arquivos necesários para o projeto.<br>
+<br>  -Configura automaticamente o pom.xml (arquivo de configuração central do Maven, que é uma ferramenta de automação de build e gerenciamento de dependências para projetos Java)<br>
+<br>  -Adiciona as dependências necessárias do SpringBoot.
 
-  a)acessamos esse link: https://start.spring.io/
+<br>  a)acessamos esse link: https://start.spring.io/
 
-  b)Configuramos o projeto maven e dependências
+ <br> b)Configuramos o projeto maven e dependências
   (escolhemos o maven pois é mais facil para quem tem pouca experiência com o spring boot)
 
-  c)baixamos o zip, descompactamos e colocamos na pasta desse repositório
+ <br> c)baixamos o zip, descompactamos e colocamos na pasta desse repositório
 
 ## Como executar o projeto
 
@@ -102,53 +102,57 @@ Utilizaremos o spring Initializer pois ele:
 
 #### configurar bancos de dados que serão utilizados:
 
-a)Cassanda (para windows)
-	-Criar conta nesse link: https://astra.datastax.com/org/b967d83c-1d32-4c30-a883-d418dd8a576c/database
-    -criar um projeto e adicionar integrantes do seu projeto no setting->users com o email que eles usaram prsa criar a conta
-    -Segui passo a passo para conectar no projeto https://astra.datastax.com/org/0002c76a-72f4-4ad7-bae8-9e400dc8af64/database/ca82aef8-88f6-43d3-a70f-3458e95f15ec/connect
-	-instalar o maven e colocar a variavel de ambiente com o caminho do download
-	<img width="646" height="64" alt="image" src="https://github.com/user-attachments/assets/5a43f7c7-e44d-455a-b0b6-ffbfce2915fb"
-    -baixar o bundle  colocar no projeto e seu caminho no "cassandraConfig" e baixar o token e colocar o clienteid e secret no cassandraconfig />
+<br>a)Cassanda (para windows)
+	<br>-Criar conta nesse link: https://astra.datastax.com/org/b967d83c-1d32-4c30-a883-d418dd8a576c/database
+   <br> -criar um projeto e adicionar integrantes do seu projeto no setting->users com o email que eles usaram prsa criar a conta
+   <br> -Segui passo a passo para conectar no projeto https://astra.datastax.com/org/0002c76a-72f4-4ad7-bae8-9e400dc8af64/database/ca82aef8-88f6-43d3-a70f-3458e95f15ec/connect
+	<br>-instalar o maven e colocar a variavel de ambiente com o caminho do download
+	<br><img width="646" height="64" alt="image" src="https://github.com/user-attachments/assets/5a43f7c7-e44d-455a-b0b6-ffbfce2915fb">
+  <br>-baixar o bundle  colocar no projeto e seu caminho no "cassandraConfig" e baixar o token e colocar o clienteid e secret no cassandraconfig />
 	
-    -em "select a method"escolha "drivers" e "type native"
+  <br> -em "select a method"escolha "drivers" e "type native"
 
 
-b)MongoDB 
--crie uma conta nesse link: https://www.mongodb.com/cloud/atlas/register 
+<br>b)MongoDB 
+<br>-crie uma conta nesse link: https://www.mongodb.com/cloud/atlas/register 
+<br>-para conectar com sua conta usando esse projeto, coloque seu usario e sua senha no aplication properties
+<br>-baixe o java 17 e coloque ele nas variaveis de ambiente da sua conta como java_home
+<br>-na variavel de ambiente path, que ja tem o java, adicione o maven: %JAVA_HOME%\bin;%PATH%;C:\Users\User\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\User\Downloads\apache-maven-3.9.11-bin\apache-maven-3.9.11\bin
 
-c)Supabase(PostGreeSQL)
--Abrir o link: https://supabase.com/dashboard/new/wawxvgvnefwlhzkrdnfz
--Criams um projeto com nome: Projetojujuca
--No SQL Editor coloque esse codigo para criar as tabelas:
+<br>c)Supabase(PostGreeSQL)
+<br>-Abrir o link: https://supabase.com/dashboard/new/wawxvgvnefwlhzkrdnfz
+<br>-Criams um projeto com nome: Projetojujuca
+<br>-No SQL Editor coloque esse codigo para criar as tabelas:
 
--Criação manual das tabelas que serão utilizadas nos bancos:
+<br>-Criação manual das tabelas que serão utilizadas nos bancos:
 
-a) Cassandra
-    -Criar database com nome: ProjetoJujucaCassandra
-    -Inserção de dados será conforme usuario interage com a aplicacao (e script?????)
-    -um integrante do grupo criou o projeto e adicionou os outros como colaboradores
+<br>a) Cassandra
+  <br>  -Criar database com nome: ProjetoJujucaCassandra
+  <br>  -Inserção de dados será conforme usuario interage com a aplicacao (e script?????)
+  <br>  -um integrante do grupo criou o projeto e adicionou os outros como colaboradores
 
-b) MongoDB
-    -crie um cluster 
-    -no lado esquerdo, clique em  “Projeto overview” e onde aparecer “cluster” clique em “browser collections”
-    -dentro do seu cluster, crie um database para o projeto 
-        -Database name: ProjetoJujucaMongo
-        -Collection Name: ProdutosJujuca
-    (é nessa coleção que será realizado o CRUD dos produtos, por isso é preciso deixar as collections vazias pois os dados serõ inseridos
-    -um integrante do grupo criou o projeto e adicionou os outros como colaboradores
+<br>b) MongoDB
+ <br>   -crie um cluster 
+  <br>|  -no lado esquerdo, clique em  “Projeto overview” e onde aparecer “cluster” clique em “browser collections”
+  <br>  -dentro do seu cluster, crie um database para o projeto 
+  <br>      -Database name: ProjetoJujucaMongo
+  <br>      -Collection Name: ProdutosJujuca
+ <br>   (é nessa coleção que será realizado o CRUD dos produtos, por isso é preciso deixar as collections vazias pois os dados serõ inseridos
+  <br>  -um integrante do grupo criou o projeto e adicionou os outros como colaboradores
 
-    *CRIO COlECAO vazia, sem estruturae quando crio codigo pra jogar dados pra la, verifico tipo dos dados
+  <br>  *CRIO COlECAO vazia, sem estruturae quando crio codigo pra jogar dados pra la, verifico tipo dos dados
     (conforme usuario interage na apicacao e script???)
 
-c) Supabase
-    -Como usaremos springboot, ele criará as tabelas para nós, basta criar o projeto com o nome "Projetojujuca"
-    -um integrante do grupo criou o projeto e adicionou os outros como colaboradores
+<br>c) Supabase
+  <br>  -Como usaremos springboot, ele criará as tabelas para nós, basta criar o projeto com o nome "Projetojujuca"
+  <br>  -um integrante do grupo criou o projeto e adicionou os outros como colaboradores
 
 
 ### Como rodar:
 
 Rodaremos o front-end e o back-end de maneira local. Já para os bancos de dados, utilizaremos DBSaaS (Database as a service), para banco de dados relacional, usaremos PostgreSQL no Supabase, para os banco de dados não sequenciais, utilizarems Cassandra no Datastax e MongoDB no Atlas.
 
--sempre que for executar esse codigo: ir em managementsystem e rodar mvn package no terminal
--dps roda: java  -cp target/(oq gerar na pasta tsrget) managementsystem (java -jar target/managementsystem-0.0.1-SNAPSHOT.jar)
--atualize o java: sdk install java 17.0.0-tem
+<br>ver se o cassandra esta com o banco habilitado
+<br>-sempre que for executar esse codigo: ir em managementsystem e rodar mvn package no terminal
+<br>-dps roda: java  -cp target/(oq gerar na pasta target) managementsystem (java -jar target/managementsystem-0.0.1-SNAPSHOT.jar)
+<br>-atualize o java: sdk install java 17.0.0-tem
