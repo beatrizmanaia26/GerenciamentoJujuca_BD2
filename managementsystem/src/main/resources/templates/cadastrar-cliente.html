@@ -8,13 +8,13 @@
     <body>
         <main class="page">
             <header class="header">
-                <h2>Formulário de Cadastro de Funcionário</h2>
+                <h2>Formulário de Cadastro de Cliente</h2>
                 <p class="hint">Preencha os campos e clique em Enviar.</p>
             </header>
 
             <section class="card">
 
-                <form th:action="@{/cadastrar-funcionario}" th:object="${funcionario}" method="post" class="form">
+                <form th:action="@{/cadastrar-cliente}" th:object="${cliente}" method="post" class="form">
 
                     <input type="hidden" th:if="${_csrf != null}"
                            th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
@@ -22,28 +22,22 @@
                     <div class="form-grid">
 
                         <div class="form-row">
-                            <label for="nome">Nome do Funcionário</label>
+                            <label for="nome">Nome do Cliente</label>
                             <input type="text" id="nome" th:field="*{nome}" required>
                         </div>
 
                         <div class="form-row">
-                            <label for="email">E-mail do Funcionário</label>
+                            <label for="email">E-mail do Cliente</label>
                             <input type="email" id="email" th:field="*{email}" required>
                         </div>
 
-                        <div class="form-row row-3 full">
-                            <div>
-                                <label for="cpf">CPF</label>
-                                <input type="text" id="cpf" th:field="*{cpf}" required>
-                            </div>
-                            <div>
-                                <label for="password">Senha</label>
-                                <input type="password" id="password" th:field="*{password}" required>
-                            </div>
-                            <div>
-                                <label for="telefone">Telefone</label>
-                                <input type="text" id="telefone" th:field="*{telefone}" required>
-                            </div>
+                        <div class="form-row">
+                            <label for="cpf">CPF</label>
+                            <input type="text" id="cpf" th:field="*{cpf}" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="telefone">Telefone</label>
+                            <input type="text" id="telefone" th:field="*{telefone}" required>
                         </div>
 
                         <div class="form-row full">
@@ -75,9 +69,9 @@
             </section>
         </main>
 
-    <!-- Mensagens via FlashAttributes -->
-    <div id="flash-sucesso" th:if="${sucesso}" th:data-msg="${sucesso}" hidden></div>
-    <div id="flash-erro"    th:if="${erro}"    th:data-msg="${erro}" hidden></div>
+        <!-- Mensagens via FlashAttributes -->
+        <div id="flash-sucesso" th:if="${sucesso}" th:data-msg="${sucesso}" hidden></div>
+        <div id="flash-erro"    th:if="${erro}"    th:data-msg="${erro}" hidden></div>
 
         <script>
             (function () {

@@ -5,47 +5,47 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tb_clients")
+@Table(name = "tb_seller")
+public class SellerModel implements Serializable{
 
-public class ClientModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id // << Anotação de identificação de id
-    @GeneratedValue(strategy = GenerationType.AUTO) // << Gerador de ID
-    private UUID id_client; // <<  id do Cliente
-    private String cargo; // << Cargo do cliente
-    private String telefone; // << Telefone do cliente
-    @ManyToOne // << marca a relação com outra tabela
-    @JoinColumn(name = "cpf", referencedColumnName = "cpf") // << diz que esse campo é relacionado a outra tabela
-    private PeopleModel cpf; // << campo de cpf do cliente
+    @Id // << define o campo como id
+    @GeneratedValue(strategy = GenerationType.AUTO) // << gerador de id
+    private UUID id_sales; // << id do seller
+    private String password; // << senha da pessoa
+    private String email;
+    //private String metaDeVendas; //<< meta de vendas do seller
+    //private String horasTrabalhadas; // <<  horas trabalhadas do seller
+    @ManyToOne // << identifica a chave estrangeira
+    @JoinColumn(name = "cpf", referencedColumnName = "cpf") // << define como deve ser feita a relação
+    private PeopleModel cpf; // << cpf do seller
 
+    // Metodos get e setters da classe de Seller
 
-    // Metodos get e setters da model cliente
-
-
-    public UUID getId_client() {
-        return id_client;
+    public UUID getId_sales() {
+        return id_sales;
     }
 
-    public void setId_client(UUID id_client) {
-        this.id_client = id_client;
+    public void setId_sales(UUID id_sales) {
+        this.id_sales = id_sales;
     }
 
-    public String getCargo() {
-        return cargo;
-    }
+    //public String getHorasTrabalhadas() {
+    //    return horasTrabalhadas;
+    //}
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
+    //public void setHorasTrabalhadas(String horasTrabalhadas) {
+    //    this.horasTrabalhadas = horasTrabalhadas;
+    //}
 
-    public String getTelefone() {
-        return telefone;
-    }
+    //public String getMetaDeVendas() {
+    //    return metaDeVendas;
+    //}
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+    //public void setMetaDeVendas(String metaDeVendas) {
+    //    this.metaDeVendas = metaDeVendas;
+    //}
 
     public PeopleModel getCpf() {
         return cpf;
@@ -53,5 +53,21 @@ public class ClientModel implements Serializable {
 
     public void setCpf(PeopleModel cpf) {
         this.cpf = cpf;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
