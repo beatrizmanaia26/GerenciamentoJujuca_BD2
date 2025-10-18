@@ -39,14 +39,16 @@ Assim, será dividido em 3 serviços, um para cada banco de dados. O primeiro, c
 
  ##### Modelo Entidade Relacionamento:
 
- ![codigo1](./imagens/merjujuca.png)
+ <img width="1082" height="561" alt="image" src="https://github.com/user-attachments/assets/2fffe1b0-8d08-449e-bfe1-2945bd3c9c41" />
+
  
   CEP/NUMERO
  pessoa (mesma pessoa pode vender e comprar)
 
  ##### Modelo Relacionar 3 Forma Normal:
 
-  ![codigo1](./imagens/MR3FNjujuca.png) 
+  <img width="693" height="425" alt="image" src="https://github.com/user-attachments/assets/0e5ff450-7ac3-420a-9602-f0ef189fb82f" />
+
 
  ### (DB1) Banco de dados 2 Não Relacional (NoSQL): MongoDB
 
