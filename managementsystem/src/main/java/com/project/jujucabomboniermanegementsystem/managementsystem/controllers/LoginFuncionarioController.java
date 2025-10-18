@@ -52,11 +52,29 @@ public class LoginFuncionarioController {
             return "redirect:/login-funcionario"; // << Retorna para a pagina de login
         }
 
-        ra.addFlashAttribute("sucesso", "Sucesso ao login"); // << Flash attributes (devole o resultado da requisição)
-        // Marca usuário como logado (simples)
-        session.setAttribute("userEmail", user.getEmail()); // << Marca como sessão logada
+        // Login OK
+        session.setAttribute("userEmail", user.getEmail()); // << marca o email para gerenciar a sessão
+        ra.addFlashAttribute("sucesso", "Login realizado com sucesso");
+        return "redirect:/area-funcionario"; // << redireciona para a area do funcionario
+    }
 
-        return "redirect:/cadastrar-funcionario"; // << Redireciona para a pagina desejada apos o login bem sucedido
+    // Página pós-login com os botões
+    @GetMapping("/area-funcionario") // << end point da area do funcionario
+    public String areaFuncionario(HttpSession session, RedirectAttributes ra) {
+        Object email = session.getAttribute("userEmail"); // << verifica se o email não esta nulo (sessão ativa)
+        if (email == null) {
+            ra.addFlashAttribute("erro", "É necessário estar logado para acessar esta página"); // << caso esteja nula não renderiza a pagina
+            return "redirect:/login-funcionario"; // << retorna para o login
+        }
+        return "area-funcionario"; // << caso exista a sessão, renderiza para a pagina de funcionario
+    }
+
+    // (Opcional) Logout simples
+    @GetMapping("/logout") // << endpoint de logout
+    public String logout(HttpSession session, RedirectAttributes ra) {
+        session.invalidate(); // << finaliza a sessão
+        ra.addFlashAttribute("sucesso", "Você saiu da sessão");
+        return "redirect:/login-funcionario"; // << devolve para a pagina inicial de login
     }
 
 }

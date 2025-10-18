@@ -40,7 +40,7 @@ public class CadastroClienteController {
         if (form.getCpf() == null || form.getCpf().isBlank() // << verifica se o campo foi preenchido
                 || form.getNome() == null || form.getNome().isBlank() // << verifica se o campo foi preenchido
                 || form.getEmail() == null || form.getEmail().isBlank() // << verifica se o campo foi preenchido
-                || form.getNumero() == null || form.getNumero().isBlank() // << verifica se o campo foi preenchido
+                || form.getNumero() == null // << verifica se o campo foi preenchido
                 || form.getCep() == null || form.getCep().isBlank() // << verifica se o campo foi preenchido
                 || form.getComplemento() == null || form.getComplemento().isBlank() // << verifica se o campo foi preenchido
                 || form.getEndereco() == null || form.getEndereco().isBlank() // << verifica se o campo foi preenchido
@@ -77,7 +77,7 @@ public class CadastroClienteController {
         people.setEndereco(form.getEndereco());
         people.setTelefone(form.getTelefone());
         people.setNumero(form.getNumero());
-        peopleRepository.save(people); // << salva os dados no banco
+        PeopleModel pessoaSalva = peopleRepository.save(people); // << salva os dados no banco
 
         ClientModel client = new ClientModel(); // << cria o objeto de cliente para salvar no banco
         client.setCpf(pessoaSalva);

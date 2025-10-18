@@ -5,47 +5,38 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tb_seller")
-public class SellerModel implements Serializable{
+@Table(name = "tb_clients")
 
+public class ClientModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id // << define o campo como id
-    @GeneratedValue(strategy = GenerationType.AUTO) // << gerador de id
-    private UUID id_sales; // << id do seller
-    private String password; // << senha da pessoa
-    private String email;
-    //private String metaDeVendas; //<< meta de vendas do seller
-    //private String horasTrabalhadas; // <<  horas trabalhadas do seller
-    @ManyToOne // << identifica a chave estrangeira
-    @JoinColumn(name = "cpf", referencedColumnName = "cpf") // << define como deve ser feita a relação
-    private PeopleModel cpf; // << cpf do seller
+    @Id // << Anotação de identificação de id
+    @GeneratedValue(strategy = GenerationType.AUTO) // << Gerador de ID
+    private UUID id_client; // <<  id do Cliente
+    private String telefone; // << Telefone do cliente
+    @ManyToOne // << marca a relação com outra tabela
+    @JoinColumn(name = "cpf", referencedColumnName = "cpf") // << diz que esse campo é relacionado a outra tabela
+    private PeopleModel cpf; // << campo de cpf do cliente
 
-    // Metodos get e setters da classe de Seller
 
-    public UUID getId_sales() {
-        return id_sales;
+    // Metodos get e setters da model cliente
+
+
+    public UUID getId_client() {
+        return id_client;
     }
 
-    public void setId_sales(UUID id_sales) {
-        this.id_sales = id_sales;
+    public void setId_client(UUID id_client) {
+        this.id_client = id_client;
     }
 
-    //public String getHorasTrabalhadas() {
-    //    return horasTrabalhadas;
-    //}
+    public String getTelefone() {
+        return telefone;
+    }
 
-    //public void setHorasTrabalhadas(String horasTrabalhadas) {
-    //    this.horasTrabalhadas = horasTrabalhadas;
-    //}
-
-    //public String getMetaDeVendas() {
-    //    return metaDeVendas;
-    //}
-
-    //public void setMetaDeVendas(String metaDeVendas) {
-    //    this.metaDeVendas = metaDeVendas;
-    //}
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 
     public PeopleModel getCpf() {
         return cpf;
@@ -55,19 +46,4 @@ public class SellerModel implements Serializable{
         this.cpf = cpf;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

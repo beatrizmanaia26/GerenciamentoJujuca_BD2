@@ -1,8 +1,9 @@
 package com.project.jujucabomboniermanegementsystem.managementsystem.controllers;
 
 import com.project.jujucabomboniermanegementsystem.managementsystem.dtos.FuncionarioForm;
-import com.project.jujucabomboniermanegementsystem.managementsystem.models.ClientModel;
+
 import com.project.jujucabomboniermanegementsystem.managementsystem.models.PeopleModel;
+import com.project.jujucabomboniermanegementsystem.managementsystem.models.ClientModel;
 import com.project.jujucabomboniermanegementsystem.managementsystem.models.SellerModel;
 import com.project.jujucabomboniermanegementsystem.managementsystem.repository.ClientRepository;
 import com.project.jujucabomboniermanegementsystem.managementsystem.repository.PeopleRepository;
@@ -43,7 +44,7 @@ public class CadastroController {
         if (form.getCpf() == null || form.getCpf().isBlank() // << verifica se o campo foi preenchido
                 || form.getNome() == null || form.getNome().isBlank() // << verifica se o campo foi preenchido
                 || form.getEmail() == null || form.getEmail().isBlank() // << verifica se o campo foi preenchido
-                || form.getNumero() == null || form.getNumero().isBlank() // << verifica se o campo foi preenchido
+                || form.getNumero() == null // << verifica se o campo foi preenchido
                 || form.getCep() == null || form.getCep().isBlank() // << verifica se o campo foi preenchido
                 || form.getComplemento() == null || form.getComplemento().isBlank() // << verifica se o campo foi preenchido
                 || form.getEndereco() == null || form.getEndereco().isBlank() // << verifica se o campo foi preenchido
@@ -81,7 +82,7 @@ public class CadastroController {
         people.setEndereco(form.getEndereco());
         people.setTelefone(form.getTelefone());
         people.setNumero(form.getNumero());
-        peopleRepository.save(people); // << salva os dados no banco
+        PeopleModel pessoaSalva = peopleRepository.save(people); // << salva os dados no banco
 
         SellerModel seller = new SellerModel(); // << cria o objeto de Seller para salvar no banco
         seller.setCpf(pessoaSalva);

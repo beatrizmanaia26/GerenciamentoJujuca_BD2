@@ -14,9 +14,7 @@ public class SellerModel implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO) // << gerador de id
     private UUID id_sales; // << id do seller
     private String password; // << senha da pessoa
-    private String email;
-    //private String metaDeVendas; //<< meta de vendas do seller
-    //private String horasTrabalhadas; // <<  horas trabalhadas do seller
+    private String email; // << email do seller
     @ManyToOne // << identifica a chave estrangeira
     @JoinColumn(name = "cpf", referencedColumnName = "cpf") // << define como deve ser feita a relação
     private PeopleModel cpf; // << cpf do seller
@@ -30,22 +28,6 @@ public class SellerModel implements Serializable{
     public void setId_sales(UUID id_sales) {
         this.id_sales = id_sales;
     }
-
-    //public String getHorasTrabalhadas() {
-    //    return horasTrabalhadas;
-    //}
-
-    //public void setHorasTrabalhadas(String horasTrabalhadas) {
-    //    this.horasTrabalhadas = horasTrabalhadas;
-    //}
-
-    //public String getMetaDeVendas() {
-    //    return metaDeVendas;
-    //}
-
-    //public void setMetaDeVendas(String metaDeVendas) {
-    //    this.metaDeVendas = metaDeVendas;
-    //}
 
     public PeopleModel getCpf() {
         return cpf;
