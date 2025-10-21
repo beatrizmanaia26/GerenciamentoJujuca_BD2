@@ -17,7 +17,6 @@ public class PeopleModel implements Serializable{
     private String cpf; // << cpf da pessoa
     private String nome; // << Nome da pessoa
     private String email; //<< email da pessoa
-    private String password; // << senha da pessoa
     private String cep; // <<  cep da pessoa
     private String complemento; // << complemento da pessoa
     private String endereco; // << endereço da pessoa
@@ -48,14 +47,6 @@ public class PeopleModel implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getCep() {

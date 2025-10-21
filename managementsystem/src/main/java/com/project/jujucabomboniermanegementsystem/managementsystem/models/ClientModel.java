@@ -13,7 +13,6 @@ public class ClientModel implements Serializable {
     @Id // << Anotação de identificação de id
     @GeneratedValue(strategy = GenerationType.AUTO) // << Gerador de ID
     private UUID id_client; // <<  id do Cliente
-    private String cargo; // << Cargo do cliente
     private String telefone; // << Telefone do cliente
     @ManyToOne // << marca a relação com outra tabela
     @JoinColumn(name = "cpf", referencedColumnName = "cpf") // << diz que esse campo é relacionado a outra tabela
@@ -31,14 +30,6 @@ public class ClientModel implements Serializable {
         this.id_client = id_client;
     }
 
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
     public String getTelefone() {
         return telefone;
     }
@@ -54,4 +45,5 @@ public class ClientModel implements Serializable {
     public void setCpf(PeopleModel cpf) {
         this.cpf = cpf;
     }
+
 }
