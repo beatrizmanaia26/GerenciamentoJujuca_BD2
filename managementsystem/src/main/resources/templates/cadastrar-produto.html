@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Produto</title>
+    <link rel="stylesheet" th:href="@{/css/cadastrar-funcionario.css}">
+</head>
+<body>
+<main class="page">
+    <header class="header">
+        <h2>Cadastrar Produto</h2>
+        <p class="hint">Preencha os campos do produto e clique em Enviar.</p>
+    </header>
+
+    <section class="card">
+        <form th:action="@{/cadastrar-produto}" th:object="${produto}" method="post" class="form">
+
+            <input type="hidden" th:if="${_csrf != null}"
+                   th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+            <div class="form-grid">
+
+                <div class="form-row">
+                    <label for="nome">Nome do Produto *</label>
+                    <input type="text" id="nome" th:field="*{nome}" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="preco">Preço (R$) *</label>
+                    <input type="number" id="preco" th:field="*{preco}" step="0.01" min="0" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="quantidade">Quantidade *</label>
+                    <input type="number" id="quantidade" th:field="*{quantidade}" min="0" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="lote">Lote</label>
+                    <input type="text" id="lote" th:field="*{lote}">
+                </div>
+
+                <div class="form-row">
+                    <label for="marca">Marca</label>
+                    <input type="text" id="marca" th:field="*{marca}">
+                </div>
+
+                <div class="form-row">
+                    <label for="tipoProduto">Tipo de Produto</label>
+                    <input type="text" id="tipoProduto" th:field="*{tipoProduto}">
+                </div>
+
+                <div class="form-row">
+                    <label for="dataValidade">Data de Validade</label>
+                    <input type="date" id="dataValidade" th:field="*{dataValidade}">
+                </div>
+
+                <div class="form-row">
+                    <label for="peso">Peso</label>
+                    <input type="number" id="peso" th:field="*{peso}" step="0.001" min="0">
+                </div>
+
+                <div class="form-row">
+                    <label for="unidade">Unidade</label>
+                    <input type="text" id="unidade" th:field="*{unidade}" placeholder="kg, g, ml, L, un">
+                </div>
+
+                <div class="form-row">
+                    <label for="imagem">URL da Imagem</label>
+                    <input type="text" id="imagem" th:field="*{imagem}" placeholder="https://exemplo.com/imagem.jpg">
+                </div>
+
+            </div>
+
+            <div class="actions">
+                <input type="submit" value="Cadastrar Produto">
+            </div>
+        </form>
+    </section>
+</main>
+
+<!-- Mensagens via FlashAttributes -->
+<div th:if="${sucesso}" style="color: green; margin-top: 16px; text-align: center;">
+    <strong>✅ </strong><span th:text="${sucesso}"></span>
+</div>
+<div th:if="${erro}" style="color: red; margin-top: 16px; text-align: center;">
+    <strong>❌ </strong><span th:text="${erro}"></span>
+</div>
+</body>
+</html>
