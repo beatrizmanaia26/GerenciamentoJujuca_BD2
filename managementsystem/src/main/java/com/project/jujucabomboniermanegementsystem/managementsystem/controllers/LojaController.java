@@ -19,14 +19,21 @@ public class LojaController {
     }
 
     @GetMapping("/loja")
-    public String listarProdutos(Model model) {
-        model.addAttribute("produtos", productRepository.findAll());
+    public String listarProdutos(@RequestParam(value = "q", required = false) String q, Model model) {
+        if (q != null && !q.isBlank()) {
+            var resultados = productRepository
+                    .findByNomeContainingIgnoreCaseOrMarcaContainingIgnoreCaseOrTipoProdutoContainingIgnoreCase(q, q, q);
+            model.addAttribute("produtos", resultados);
+        } else {
+            model.addAttribute("produtos", productRepository.findAll());
+        }
+        model.addAttribute("q", q == null ? "" : q.trim());
         return "loja";
     }
 
     @PostMapping("/loja/comprar")
     public String comprar(@RequestParam("productId") String productId,
-                          @RequestParam("quantidade") Integer quantidade,
+                          @RequestParam(name = "quantidade", required = false) Integer quantidade,
                           RedirectAttributes ra) {
 
         var result = purchaseService.comprar(productId, quantidade != null ? quantidade : 0);
@@ -45,3 +52,4 @@ public class LojaController {
         return "redirect:/loja";
     }
 }
+
