@@ -5,52 +5,55 @@
     <title>Formulário de Cadastro de Funcionário</title>
     <link rel="stylesheet" th:href="@{/css/cadastrar-funcionario.css}">
 </head>
-    <body>
-        <main class="page">
-            <header class="header">
-                <h2>Login de Funcionário</h2>
-            </header>
-            <section class="card">
-                <form th:action="@{/login-funcionario}" th:object="${seller}" method="post" class="form">
+<body>
+    <main class="page">
+        <header class="header">
+            <h2>Login de Funcionário</h2>
+        </header>
 
-                    <div class="form-grid">
+        <section class="card">
+            <form th:action="@{/login-funcionario}" th:object="${seller}" method="post" class="form">
 
-                        <div class="form-row">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" th:field="*{email}" required>
-                        </div>
-
-                        <div class="form-row">
-                            <label for="password">Senha</label>
-                            <input type="password" id="password" th:field="*{password}" required>
-                        </div>
-
+                <div class="form-grid">
+                    <div class="form-row">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" th:field="*{email}" required>
                     </div>
 
-                    <div class="actions">
-                        <input type="submit" value="Enviar">
+                    <div class="form-row">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" th:field="*{password}" required>
                     </div>
-                </form>
-            </section>
-        </main>
+                </div>
 
-        <!-- Marcadores das mensagens vindas do RedirectAttributes (não aparecem na tela) -->
-        <div id="flash-sucesso" th:if="${sucesso}" th:data-msg="${sucesso}" hidden></div>
-        <div id="flash-erro"    th:if="${erro}"    th:data-msg="${erro}" hidden></div>
+                <div class="actions">
+                    <input type="submit" value="Enviar">
+                </div>
 
-        <!-- JS básico para exibir pop-up com alert() -->
-        <script>
-            (function () {
-                var ok  = document.getElementById('flash-sucesso');
-                var err = document.getElementById('flash-erro');
+                <!-- Link para a página de cadastro de funcionário -->
+                <p class="helper-link">
+                    <a th:href="@{/cadastrar-funcionario}">Cadastrar funcionário</a>
+                </p>
+            </form>
+        </section>
+    </main>
 
-                if (ok) {
-                    alert(ok.dataset.msg);
-                } else if (err) {
-                    alert(err.dataset.msg);
-                }
-            })();
-        </script>
+    <!-- Marcadores das mensagens vindas do RedirectAttributes (não aparecem na tela) -->
+    <div id="flash-sucesso" th:if="${sucesso}" th:data-msg="${sucesso}" hidden></div>
+    <div id="flash-erro"    th:if="${erro}"    th:data-msg="${erro}" hidden></div>
 
-    </body>
+    <!-- JS básico para exibir pop-up com alert() -->
+    <script>
+        (function () {
+            var ok  = document.getElementById('flash-sucesso');
+            var err = document.getElementById('flash-erro');
+
+            if (ok) {
+                alert(ok.dataset.msg);
+            } else if (err) {
+                alert(err.dataset.msg);
+            }
+        })();
+    </script>
+</body>
 </html>

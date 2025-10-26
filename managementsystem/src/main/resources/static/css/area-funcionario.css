@@ -1,0 +1,130 @@
+:root {
+    --bg: #f7f9fc;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --ring: #bfdbfe;
+    --border: #e5e7eb;
+    --radius: 12px;
+}
+
+/* Base herdada */
+* { box-sizing: border-box; }
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.page {
+    max-width: 860px;
+    margin: 32px auto;
+    padding: 0 16px;
+}
+
+/* Header com navegação à direita */
+.header {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.header h2 {
+    margin: 0 0 4px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.header .hint {
+    margin: 0;
+    color: var(--muted);
+    font-size: .95rem;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Card */
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(17, 24, 39, 0.04);
+}
+
+/* Grade de botões da área */
+.btn-grid,
+.actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    text-align: center;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid transparent;
+    background: #fff;
+    color: var(--text);
+    transition: transform .06s ease, box-shadow .12s ease, background-color .12s ease, border-color .12s ease;
+    user-select: none;
+    outline: none;
+}
+
+/* Acessibilidade: foco visível */
+.btn:focus-visible {
+    box-shadow: 0 0 0 4px var(--ring);
+}
+
+/* Variações */
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+.btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+.btn-primary:active { transform: translateY(1px); }
+
+.btn-outline {
+    background: #fff;
+    color: var(--text);
+    border-color: var(--border);
+}
+.btn-outline:hover { background: #f8fafc; }
+.btn-outline:active { transform: translateY(1px); }
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+}
+.btn-ghost:hover { background: #f3f4f6; }
+
+/* Tamanhos e utilitários */
+.btn-lg { padding: 14px 18px; font-size: 1rem; }
+.btn-block { width: 100%; }
+
+/* Responsivo: grade em colunas no desktop */
+@media (min-width: 720px) {
+    .btn-grid,
+    .actions {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

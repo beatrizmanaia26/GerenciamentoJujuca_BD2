@@ -90,7 +90,7 @@ public class CadastroController {
         clientRepository.save(client);
 
         ra.addFlashAttribute("sucesso", "Funcionário cadastrado com sucesso!"); // << Cria o FlashAttribute  para a mensagem de sucesso
-        return "redirect:/cadastrar-funcionario"; // << redireciona para a pagina de cadastro novamente
+        return "redirect:/login-funcionario"; // << redireciona para a pagina de cadastro novamente
     }
 
 }
