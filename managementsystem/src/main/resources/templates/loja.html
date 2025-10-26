@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Loja</title>
+    <link rel="stylesheet" th:href="@{/css/cadastrar-funcionario.css}">
+    <style>
+        .prod-grid { display: grid; gap: 16px; }
+        @media (min-width: 800px) { .prod-grid { grid-template-columns: repeat(2, 1fr); } }
+        .prod-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:16px; }
+        .prod-title { font-weight:700; margin:0 0 6px 0; }
+        .muted { color:#6b7280; font-size:.92rem; margin:0; }
+        .row { display:flex; gap:12px; align-items:center; margin-top:10px; }
+        .row input[type="number"] { width:100px; padding:8px; border:1px solid #e5e7eb; border-radius:8px; }
+        .row button { padding:10px 14px; border:0; background:#2563eb; color:#fff; border-radius:8px; cursor:pointer; }
+        .row button:hover { background:#1d4ed8; }
+        .img { width:100%; height:180px; object-fit:cover; border-radius:10px; border:1px solid #e5e7eb; }
+    </style>
+</head>
+<body>
+<main class="page">
+    <header class="header">
+        <h2>Loja</h2>
+        <p class="hint">Escolha a quantidade e compre. O estoque é atualizado automaticamente.</p>
+    </header>
+
+    <section class="prod-grid" th:if="${produtos}">
+        <article class="prod-card" th:each="p : ${produtos}">
+            <img class="img" th:if="${p.imagem}" th:src="${p.imagem}" alt="" />
+            <h3 class="prod-title" th:text="${p.nome}">Produto</h3>
+            <p class="muted">
+                <span>Marca: </span><span th:text="${p.marca}">Marca</span>
+                <span> • Tipo: </span><span th:text="${p.tipoProduto}">Tipo</span>
+            </p>
+            <p class="muted">
+                <span>Preço: R$ </span><span th:text="${#numbers.formatDecimal(p.preco, 1, 2)}">0,00</span>
+                <span> • Em estoque: </span><span th:text="${p.quantidade}">0</span>
+            </p>
+
+            <form class="row" th:action="@{/loja/comprar}" method="post">
+                <!-- <input type="hidden" th:if="${_csrf != null}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> -->
+                <input type="hidden" name="productId" th:value="${p.id}">
+                <label for="qtd" class="muted">Qtd</label>
+                <input id="qtd" type="number" name="quantidade" min="1" value="1" required>
+                <button type="submit">Comprar</button>
+            </form>
+        </article>
+    </section>
+</main>
+
+<!-- Pop-ups básicos -->
+<div id="flash-sucesso" th:if="${sucesso}" th:data-msg="${sucesso}" hidden></div>
+<div id="flash-erro"    th:if="${erro}"    th:data-msg="${erro}" hidden></div>
+
+<script>
+    (function () {
+        var ok  = document.getElementById('flash-sucesso');
+        var err = document.getElementById('flash-erro');
+
+        if (ok) {
+            alert(ok.dataset.msg);
+        } else if (err) {
+            alert(err.dataset.msg);
+        }
+    })();
+</script>
+</body>
+</html>
