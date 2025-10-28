@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Área do Funcionário</title>
+    <link rel="stylesheet" th:href="@{/css/cadastrar-funcionario.css}">
+</head>
+    <body>
+        <main class="page">
+            <header class="header">
+                <div>
+                    <h2>Área do Funcionário</h2>
+                    <p class="hint">Escolha uma opção</p>
+                </div>
+                <nav class="nav">
+                    <a th:href="@{/logout}" class="btn">Sair</a>
+                </nav>
+            </header>
+        
+            <section class="card">
+                <div class="actions">
+                    <a th:href="@{/cadastrar-funcionario}" class="btn">Cadastrar Funcionário</a>
+                    <a th:href="@{/cadastrar-cliente}" class="btn">Cadastrar Cliente</a>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Flash (RedirectAttributes) -->
+        <div id="flash-sucesso" th:if="${sucesso}" th:data-msg="${sucesso}" hidden></div>
+        <div id="flash-erro"    th:if="${erro}"    th:data-msg="${erro}" hidden></div>
+        
+        <script>
+            (function () {
+                var ok  = document.getElementById('flash-sucesso');
+                var err = document.getElementById('flash-erro');
+                if (ok)      alert(ok.dataset.msg);
+                else if (err) alert(err.dataset.msg);
+            })();
+        </script>
+    </body>
+</html>

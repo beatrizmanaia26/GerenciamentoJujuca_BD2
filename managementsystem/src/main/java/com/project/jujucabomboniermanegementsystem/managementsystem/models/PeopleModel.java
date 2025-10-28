@@ -1,24 +1,29 @@
 package com.project.jujucabomboniermanegementsystem.managementsystem.models;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name = "tb_people")
 public class PeopleModel implements Serializable{
+
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @Column(nullable = false, unique = true, length = 11)
-    private String cpf;
-    private String nome;
-    private String email;
-    private String password;
-    private String cep;
-    private String complemento;
-    private String endereco;
-    private int numero;
+    @Id // << Marca como ID a coluna
+    @Column(nullable = false, unique = true, length = 11) // << define como deve ser o campo
+    private String cpf; // << cpf da pessoa
+    private String nome; // << Nome da pessoa
+    private String email; //<< email da pessoa
+    private String cep; // <<  cep da pessoa
+    private String complemento; // << complemento da pessoa
+    private String endereco; // << endereço da pessoa
+    private String telefone; // <<  telefone da pessoa
+    private int numero; // << numero da casa
 
+    // Metodos get e setters da model de pessoa
 
     public String getNome() {
         return nome;
@@ -42,14 +47,6 @@ public class PeopleModel implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getCep() {
@@ -82,5 +79,13 @@ public class PeopleModel implements Serializable{
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 }
