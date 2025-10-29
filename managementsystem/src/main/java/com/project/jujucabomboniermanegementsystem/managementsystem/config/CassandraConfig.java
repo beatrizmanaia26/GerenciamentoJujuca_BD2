@@ -21,7 +21,7 @@ public class CassandraConfig {
             ClassPathResource resource = new ClassPathResource("secure-connect-projetojujucacassandra.zip");
             
             if (!resource.exists()) {
-                System.err.println("❌ Arquivo Cassandra não encontrado!");
+                System.err.println("Arquivo Cassandra não encontrado!");
                 return null;
             }
             
@@ -40,11 +40,11 @@ public class CassandraConfig {
                 )
                 .build();
             
-            System.out.println("✅ Cassandra conectado e pronto para uso!");
+            System.out.println("Cassandra conectado e pronto para uso!");
             return session;
                 
         } catch (Exception e) {
-            System.err.println("❌ Erro ao conectar com Cassandra: " + e.getMessage());
+            System.err.println("Erro ao conectar com Cassandra: " + e.getMessage());
             return null;
         }
     }

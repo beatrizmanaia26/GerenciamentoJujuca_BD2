@@ -20,20 +20,20 @@ public class DatabaseTester {
     @PostConstruct
     public void testConnection() {
         if (session == null) {
-            System.out.println("⚠️ Cassandra não disponível");
+            System.out.println("Cassandra não disponível");
             return;
         }
         
         try {
-            System.out.println("🧪 Testando conexão Cassandra...");
+            System.out.println("Testando conexão Cassandra...");
             ResultSet rs = session.execute("select release_version from system.local");
             Row row = rs.one();
             
             if (row != null) {
-                System.out.println("✅ Cassandra OK - Versão: " + row.getString("release_version"));
+                System.out.println("Cassandra OK - Versão: " + row.getString("release_version"));
             }
         } catch (Exception e) {
-            System.out.println("❌ Falha no teste: " + e.getMessage());
+            System.out.println("Falha no teste: " + e.getMessage());
         }
     }
 }
