@@ -9,42 +9,71 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class PurchaseService {
 
     private final MongoTemplate mongoTemplate;
     private final ProductRepository productRepository;
+    private final HistoryService historyService;
 
-    public PurchaseService(MongoTemplate mongoTemplate, ProductRepository productRepository) {
+    public PurchaseService(MongoTemplate mongoTemplate,
+                           ProductRepository productRepository,
+                           HistoryService historyService) {
         this.mongoTemplate = mongoTemplate;
         this.productRepository = productRepository;
+        this.historyService = historyService;
     }
 
     public PurchaseResult comprar(String productId, int quantidadeDesejada) {
+
         if (quantidadeDesejada <= 0) {
             return PurchaseResult.erro("Quantidade inválida.");
         }
 
-        // 1) Busca o produto para pegar nome e preço (exibição)
+        // 1) Busca o produto
         var opt = productRepository.findById(productId);
         if (opt.isEmpty()) {
             return PurchaseResult.erro("Produto não encontrado.");
         }
-        ProductModel p = opt.get();
 
-        // 2) Tenta decrementar estoque de forma ATÔMICA somente se houver quantidade suficiente
-        Query q = new Query(Criteria.where("id").is(productId).and("quantidade").gte(quantidadeDesejada));
+        ProductModel produto = opt.get();
+
+        // 2) Decrementa o estoque somente se houver quantidade suficiente
+        Query q = new Query(Criteria.where("id").is(productId)
+                .and("quantidade").gte(quantidadeDesejada));
         Update u = new Update().inc("quantidade", -quantidadeDesejada);
 
         UpdateResult res = mongoTemplate.updateFirst(q, u, ProductModel.class);
 
         if (res.getModifiedCount() == 1) {
-            double subtotal = p.getPreco() != null ? p.getPreco() * quantidadeDesejada : 0.0;
-            return PurchaseResult.ok("Compra realizada com sucesso!", p.getNome(), quantidadeDesejada, p.getPreco(), subtotal);
+            double subtotal = produto.getPreco() != null ? produto.getPreco() * quantidadeDesejada : 0.0;
+
+            // 3) Salva histórico no Cassandra (CPF e nome nulos)
+            try {
+                UUID id = historyService.registrarTransacao(
+                        produto.getNome(),
+                        quantidadeDesejada,
+                        produto.getPreco(),
+                        null, // cpfClienteOpcional nulo
+                        null  // nomeClienteOpcional nulo
+                );
+                System.out.println("Histórico salvo com ID: " + id);
+            } catch (Exception e) {
+                System.err.println("Erro ao salvar histórico no Cassandra: " + e.getMessage());
+            }
+
+            return PurchaseResult.ok("Compra realizada com sucesso!",
+                    produto.getNome(),
+                    quantidadeDesejada,
+                    produto.getPreco(),
+                    subtotal);
         } else {
             return PurchaseResult.erro("Estoque insuficiente para a quantidade solicitada.");
         }
     }
+
 
     public static class PurchaseResult {
         private boolean sucesso;
