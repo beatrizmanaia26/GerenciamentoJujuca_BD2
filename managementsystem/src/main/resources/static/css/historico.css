@@ -1,0 +1,71 @@
+body {
+    font-family: system-ui, sans-serif;
+    background: #f7f9fc;
+    color: #1f2937;
+    margin: 0;
+    padding: 0;
+}
+
+.page {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-form input[type="date"] {
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.filter-form button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.filter-form .btn-reset {
+    color: #2563eb;
+    text-decoration: none;
+    margin-left: 4px;
+}
+
+.tabela table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabela th, .tabela td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.tabela th {
+    background-color: #f1f5f9;
+}
+
+.sem-dados {
+    text-align: center;
+    color: #888;
+    padding: 20px 0;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Histórico de Vendas</title>
+    <link rel="stylesheet" th:href="@{/css/historico.css}">
+</head>
+<body>
+<main class="page">
+    <header class="header">
+        <h1>Histórico de Vendas</h1>
+        <form th:action="@{/historico}" method="get" class="filter-form">
+            <label for="data">Filtrar por data:</label>
+            <input type="date" id="data" name="data" th:value="${dataSelecionada}">
+            <button type="submit">Buscar</button>
+            <a th:href="@{/historico}" class="btn-reset">Limpar</a>
+        </form>
+    </header>
+
+    <section class="tabela">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Transação</th>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Preço (R$)</th>
+                    <th>Cliente</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="h : ${historicos}">
+                    <td th:text="${h.id_transacao}"></td>
+                    <td th:text="${h.produto}"></td>
+                    <td th:text="${h.quantidade}"></td>
+                    <td th:text="${#numbers.formatDecimal(h.preco, 1, 2)}"></td>
+                    <td th:text="${h.nome_cliente != null ? h.nome_cliente : 'N/A'}"></td>
+                    <td th:text="${h.date}"></td>
+                    <td th:text="${h.hourMinSec}"></td>
+                </tr>
+                <tr th:if="${historicos.size() == 0}">
+                    <td colspan="7" class="sem-dados">Nenhum registro encontrado.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+</body>
+</html>
