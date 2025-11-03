@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Produtos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6fa;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px 15px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #e5e7eb;
+            background-color: #fff;
+            transition: background-color 0.2s;
+        }
+
+        tbody tr:hover {
+            background-color: #f9fafb;
+        }
+
+        th {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.03em;
+        }
+
+        .actions a,
+        .actions button {
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .delete-btn {
+            background-color: #dc2626;
+            color: white;
+            margin-left: 8px;
+        }
+
+        .delete-btn:hover {
+            background-color: #b91c1c;
+        }
+
+        .add-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            background-color: #16a34a;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .add-btn:hover {
+            background-color: #15803d;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        .image-thumb {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            .container {
+                padding: 20px;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead {
+                display: none;
+            }
+            tr {
+                margin-bottom: 15px;
+                border-bottom: 2px solid #f3f4f6;
+                border-radius: 8px;
+                padding: 10px;
+            }
+            td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                width: 45%;
+                font-weight: 600;
+                color: #4b5563;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Gerenciar Produtos</h1>
+
+    <a href="/cadastrar-produto" class="add-btn">+ Cadastrar Novo Produto</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Preço (R$)</th>
+                <th>Quantidade</th>
+                <th>Marca</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="produto : ${produtos}">
+                <td data-label="Imagem">
+                    <img th:src="${produto.imagem}" alt="Imagem do Produto" class="image-thumb"
+                         th:if="${produto.imagem != null and !#strings.isEmpty(produto.imagem)}"/>
+                    <span th:if="${produto.imagem == null or #strings.isEmpty(produto.imagem)}">Sem imagem</span>
+                </td>
+                <td data-label="Nome" th:text="${produto.nome}"></td>
+                <td data-label="Preço"
+                    th:text="${#numbers.formatDecimal(produto.preco, 2, 'COMMA', 2, 'POINT')}"></td>
+                <td data-label="Quantidade" th:text="${produto.quantidade}"></td>
+                <td data-label="Marca" th:text="${produto.marca}"></td>
+                <td class="actions" data-label="Ações">
+                    <a th:href="@{'/editar-produto/' + ${produto.id}}" class="edit-btn">Editar</a>
+
+                    <form th:action="@{'/excluir/' + ${produto.id}}"
+                          method="post"
+                          style="display:inline"
+                          onsubmit="return confirm('Tem certeza que deseja excluir este produto? Essa ação não pode ser desfeita.');">
+                        <!-- CSRF só se existir no contexto (evita erro quando não há Spring Security) -->
+                        <input type="hidden" th:if="${_csrf != null}"
+                               th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        <button type="submit" class="delete-btn">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/loja" class="back-btn">Voltar à Loja</a>
+</div>
+
+</body>
+</html>
