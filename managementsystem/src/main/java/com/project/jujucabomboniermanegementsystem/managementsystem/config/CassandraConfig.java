@@ -35,8 +35,8 @@ public class CassandraConfig {
             CqlSession session = CqlSession.builder()
                     .withCloudSecureConnectBundle(tempFile)
                     .withAuthCredentials(
-                            "AHpljiXntauBLPozERHnZJud",  // CLIENT ID
-                            "-3YyGAL+rC7Dv_3_ptuEt0xS8GRpocB.pxaEdCdO7vydlMw8Lx,cr8yIdhRqkuhOImi-FCnjT6.-tZLZMEgmJ2F+6fn8ZN7Z7HT9J6DEGPbL5cxt2abj60__1Wzx_M,u" // CLIENT SECRET
+                            "biHPspzZAAsAbEKhihNMddGR",  // CLIENT ID
+                            "LQSX.qRPBp9WNEzXcN3XKHACYo3.uniYjY4UdRsLYfFjaPIe6Af5-X6lbAz_xwTx30Wn8P4JcmGUnhG1FIAL6jgyussQf4s++,dm6ghO43YkLNhef6.iZCbokZmPb5yr" // CLIENT SECRET
                     )
                     .withKeyspace("history_transation") // coloque o nome exato do seu keyspace
                     .build();
