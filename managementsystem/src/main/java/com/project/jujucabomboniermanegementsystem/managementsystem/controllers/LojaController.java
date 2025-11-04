@@ -34,9 +34,14 @@ public class LojaController {
     @PostMapping("/loja/comprar")
     public String comprar(@RequestParam("productId") String productId,
                           @RequestParam(name = "quantidade", required = false) Integer quantidade,
+                          @RequestParam(name = "cpfCliente", required = false) String cpfCliente,
                           RedirectAttributes ra) {
 
-        var result = purchaseService.comprar(productId, quantidade != null ? quantidade : 0);
+        var result = purchaseService.comprar(
+                productId,
+                quantidade != null ? quantidade : 0,
+                cpfCliente // CPF opcional
+        );
 
         if (result.isSucesso()) {
             String msg = result.getMensagem()
@@ -52,4 +57,3 @@ public class LojaController {
         return "redirect:/loja";
     }
 }
-

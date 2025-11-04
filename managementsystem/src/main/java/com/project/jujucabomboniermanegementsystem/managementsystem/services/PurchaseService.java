@@ -1,7 +1,9 @@
 package com.project.jujucabomboniermanegementsystem.managementsystem.services;
 
 import com.project.jujucabomboniermanegementsystem.managementsystem.models.ProductModel;
+import com.project.jujucabomboniermanegementsystem.managementsystem.models.PeopleModel;
 import com.project.jujucabomboniermanegementsystem.managementsystem.repository.ProductRepository;
+import com.project.jujucabomboniermanegementsystem.managementsystem.repository.PeopleRepository;
 import com.mongodb.client.result.UpdateResult;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -17,22 +19,24 @@ public class PurchaseService {
     private final MongoTemplate mongoTemplate;
     private final ProductRepository productRepository;
     private final HistoryService historyService;
+    private final PeopleRepository peopleRepository;
 
     public PurchaseService(MongoTemplate mongoTemplate,
                            ProductRepository productRepository,
-                           HistoryService historyService) {
+                           HistoryService historyService,
+                           PeopleRepository peopleRepository) {
         this.mongoTemplate = mongoTemplate;
         this.productRepository = productRepository;
         this.historyService = historyService;
+        this.peopleRepository = peopleRepository;
     }
 
-    public PurchaseResult comprar(String productId, int quantidadeDesejada) {
+    public PurchaseResult comprar(String productId, int quantidadeDesejada, String cpfCliente) {
 
         if (quantidadeDesejada <= 0) {
             return PurchaseResult.erro("Quantidade inválida.");
         }
 
-        // 1) Busca o produto
         var opt = productRepository.findById(productId);
         if (opt.isEmpty()) {
             return PurchaseResult.erro("Produto não encontrado.");
@@ -40,7 +44,7 @@ public class PurchaseService {
 
         ProductModel produto = opt.get();
 
-        // 2) Decrementa o estoque somente se houver quantidade suficiente
+        // Verifica estoque
         Query q = new Query(Criteria.where("id").is(productId)
                 .and("quantidade").gte(quantidadeDesejada));
         Update u = new Update().inc("quantidade", -quantidadeDesejada);
@@ -50,21 +54,40 @@ public class PurchaseService {
         if (res.getModifiedCount() == 1) {
             double subtotal = produto.getPreco() != null ? produto.getPreco() * quantidadeDesejada : 0.0;
 
-            // 3) Salva histórico no Cassandra (CPF e nome nulos)
+            // Identifica cliente
+            String nomeCliente;
+            String cpf;
+
+            if (cpfCliente != null && !cpfCliente.isBlank()) {
+                PeopleModel cliente = peopleRepository.findByCpf(cpfCliente);
+
+                if (cliente != null) {
+                    nomeCliente = cliente.getNome();
+                    cpf = cliente.getCpf();
+                } else {
+                    nomeCliente = "Cliente não cadastrado";
+                    cpf = cpfCliente;
+                }
+            } else {
+                nomeCliente = "N/A";
+                cpf = "N/A";
+            }
+
+            // Salva no Cassandra
             try {
                 UUID id = historyService.registrarTransacao(
                         produto.getNome(),
                         quantidadeDesejada,
                         produto.getPreco(),
-                        null, // cpfClienteOpcional nulo
-                        null  // nomeClienteOpcional nulo
+                        cpf,
+                        nomeCliente
                 );
                 System.out.println("Histórico salvo com ID: " + id);
             } catch (Exception e) {
                 System.err.println("Erro ao salvar histórico no Cassandra: " + e.getMessage());
             }
 
-            return PurchaseResult.ok("Compra realizada com sucesso!",
+            return PurchaseResult.ok("Venda registrada com sucesso!",
                     produto.getNome(),
                     quantidadeDesejada,
                     produto.getPreco(),
@@ -73,7 +96,6 @@ public class PurchaseService {
             return PurchaseResult.erro("Estoque insuficiente para a quantidade solicitada.");
         }
     }
-
 
     public static class PurchaseResult {
         private boolean sucesso;

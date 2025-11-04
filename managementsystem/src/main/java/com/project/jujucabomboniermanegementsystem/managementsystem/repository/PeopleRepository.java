@@ -9,4 +9,5 @@ public interface PeopleRepository extends JpaRepository<PeopleModel, String> {
     boolean existsByCpf(String cpf);
     boolean existsByEmail(String email);
     Optional<PeopleModel> findByEmail(String email);
+    PeopleModel findByCpf(String cpf);
 }

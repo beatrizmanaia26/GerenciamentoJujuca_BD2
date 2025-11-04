@@ -131,8 +131,10 @@
                 <form class="buy" th:action="@{/loja/comprar}" method="post">
                     <input type="hidden" name="productId" th:value="${p.id}">
                     <input type="number" name="quantidade" min="1" step="1" placeholder="Qtd" th:attr="max=${p.quantidade}">
-                    <button type="submit" class="btn">Comprar</button>
+                    <input type="text" name="cpfCliente" placeholder="CPF (opcional)" style="width:130px;">
+                    <button type="submit" class="btn">Vender</button>
                 </form>
+
             </div>
         </div>
     </section>
@@ -147,4 +149,6 @@
     })();
 </script>
 </body>
+
+
 </html>
