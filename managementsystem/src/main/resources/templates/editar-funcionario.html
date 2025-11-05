@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Funcionário</title>
+    <link rel="stylesheet" th:href="@{/css/cadastrar-funcionario.css}">
+    <style>
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label { font-weight: bold; }
+        input {
+            padding: 8px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+        .btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .btn:hover { background: var(--primary-hover); }
+    </style>
+</head>
+<body>
+<main class="page">
+    <header class="header">
+        <h2>Editar Funcionário</h2>
+        <a th:href="@{/gerenciar-funcionarios}" class="btn" style="background:#fff;color:var(--text);border:1px solid var(--border);">Voltar</a>
+    </header>
+
+    <form th:action="@{/gerenciar-funcionarios/salvar}" method="post" th:object="${pessoa}">
+        <input type="hidden" name="id" th:value="${funcionario.id_sales}">
+
+        <label>CPF</label>
+        <input type="text" th:field="*{cpf}" readonly>
+
+        <label>Nome</label>
+        <input type="text" th:field="*{nome}" required>
+
+        <label>Email</label>
+        <input type="email" th:field="*{email}" required>
+
+        <label>Telefone</label>
+        <input type="text" th:field="*{telefone}">
+
+        <label>Endereço</label>
+        <input type="text" th:field="*{endereco}">
+
+        <label>Número</label>
+        <input type="number" th:field="*{numero}">
+
+        <label>CEP</label>
+        <input type="text" th:field="*{cep}">
+
+        <label>Complemento</label>
+        <input type="text" th:field="*{complemento}">
+
+        <button type="submit" class="btn">Salvar Alterações</button>
+    </form>
+</main>
+</body>
+</html>

@@ -78,11 +78,10 @@ public class GerenciarClienteController {
         try {
             var client = clientRepository.findById(id).orElse(null);
             if (client != null) {
-                // Exclui da tabela client e da tabela people
-                String cpf = client.getCpf().getCpf();
+                // apenas apaga o vínculo do cliente
                 clientRepository.deleteById(id);
-                peopleRepository.deleteById(cpf);
-                ra.addFlashAttribute("sucesso", "Cliente excluído com sucesso!");
+
+                ra.addFlashAttribute("sucesso", "Cliente removido com sucesso!");
             } else {
                 ra.addFlashAttribute("erro", "Cliente não encontrado.");
             }
@@ -92,4 +91,5 @@ public class GerenciarClienteController {
 
         return "redirect:/gerenciar-clientes";
     }
+
 }

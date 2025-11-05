@@ -10,4 +10,5 @@ import java.util.UUID;
 public interface SellerRepository extends JpaRepository<SellerModel, UUID> {
 
     Optional<SellerModel> findByEmail(String email);
+    boolean existsByCpf_Cpf(String cpf);
 }
