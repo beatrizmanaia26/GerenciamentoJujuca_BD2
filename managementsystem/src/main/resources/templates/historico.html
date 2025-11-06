@@ -13,7 +13,8 @@
             <label for="data">Filtrar por data:</label>
             <input type="date" id="data" name="data" th:value="${dataSelecionada}">
             <button type="submit">Buscar</button>
-            <a th:href="@{/historico}" class="btn-reset">Limpar</a>
+            <a th:href="@{/historico}" class="btn-reset">Limpar</a> 
+            <a th:href="@{/area-funcionario}" class="btn" style="background:#fff;color:var(--text);border-color:var(--border);">Voltar à Área do Funcionário</a>
         </form>
     </header>
 

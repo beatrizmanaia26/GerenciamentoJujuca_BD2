@@ -34,8 +34,8 @@
 <main class="page">
     <header class="header">
         <h2>Editar Funcionário</h2>
-        <a th:href="@{/gerenciar-funcionarios}" class="btn" style="background:#fff;color:var(--text);border:1px solid var(--border);">Voltar</a>
-    </header>
+        <a th:href="@{/area-funcionario}" class="btn" style="background:#fff;color:var(--text);border-color:var(--border);">Voltar à Área do Funcionário</a>
+     </header>
 
     <form th:action="@{/gerenciar-funcionarios/salvar}" method="post" th:object="${pessoa}">
         <input type="hidden" name="id" th:value="${funcionario.id_sales}">
