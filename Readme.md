@@ -157,8 +157,6 @@ ou se estiver no VSCode:
 `mvn spring-boot:run`
 
 
-
-
 ---
 
 ### 5. Como acessar e usar a aplicação
@@ -180,11 +178,13 @@ Se estiver utilizando Codespaces do GitHub, será gerado um link público na pla
 - **Gestão de Clientes e Funcionários**
   - Cadastrar novos clientes ou funcionários
   - Excluir e consultar registros de clientes e funcionários
+  - Editar algumas informações dos clientes e funcionários
 
 - **Gestão de Produtos**
   - Inserir novos produtos à doceria
   - Remover produtos existentes
   - Listar todos os produtos cadastrados
+  - Editar quantidade, preço, lote, nome
 
 - **Vendas e Estoque**
   - Registrar novas vendas
