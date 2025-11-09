@@ -9,28 +9,32 @@
 
 ## 📘 Descrição do Projeto
 
+```mermaid
+graph LR
+    S1 <--> S2
+    S2 <--> RDB
+    S2 <--> DB1
+    S2 <--> DB2
+```
+
 O projeto **Gerenciamento Jujuca Bombonier** tem como objetivo desenvolver um sistema que facilite o controle de vendas, estoque e lucros da doceria Jujuca Bombonier, localizada na FEI.  
 A proposta é utilizar três bancos de dados diferentes (um relacional e dois não relacionais), com base na natureza dos dados e na necessidade de cada operação.
 
 O sistema é dividido em dois serviços principais:
 - **S1 (Front-end):** interface desenvolvida em HTML/CSS, responsável por enviar requisições ao serviço S2 e exibir as respostas em formato JSON.
 - **S2 (Back-end):** desenvolvido em Java com Spring Boot, responsável por realizar o CRUD de cada tipo de dado e gerenciar a comunicação com os três bancos.
-
-graph LR
-    S1 <--> S2
-    S2 <--> RDB
-    S2 <--> DB1
-    S2 <--> DB2
+- **RDB (Relacional):** escolhido Supabase.
+- **DB1 e DB2:** escolhido MongoDB e Cassandra.
 
 
 ---
 
 ## 🗂 Estrutura Geral
 
-```
+```mermaid
 graph LR
     S1[Front-end HTML/CSS] <--> S2[Back-end Java Spring Boot]
-    S2 --> Supabase[(PostgreSQL - Relacional)] \n
+    S2 --> Supabase[(PostgreSQL - Relacional)]
     S2 --> MongoDB[(MongoDB - Document Store)]
     S2 --> Cassandra[(Cassandra - Wide Column)]
 ```
