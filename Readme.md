@@ -16,6 +16,13 @@ O sistema é dividido em dois serviços principais:
 - **S1 (Front-end):** interface desenvolvida em HTML/CSS, responsável por enviar requisições ao serviço S2 e exibir as respostas em formato JSON.
 - **S2 (Back-end):** desenvolvido em Java com Spring Boot, responsável por realizar o CRUD de cada tipo de dado e gerenciar a comunicação com os três bancos.
 
+graph LR
+    S1 <--> S2
+    S2 <--> RDB
+    S2 <--> DB1
+    S2 <--> DB2
+
+
 ---
 
 ## 🗂 Estrutura Geral
