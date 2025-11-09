@@ -33,7 +33,7 @@ O sistema é dividido em dois serviços principais:
 
 ```mermaid
 graph LR
-    S1[Front-end HTML/CSS] <--> S2[Back-end Java Spring Boot]
+    S1[Front-end HTML/CSS] <--> S2[Back-end Java Spring Boot 'controller'] 
     S2 --> Supabase[(PostgreSQL - Relacional)]
     S2 --> MongoDB[(MongoDB - Document Store)]
     S2 --> Cassandra[(Cassandra - Wide Column)]
