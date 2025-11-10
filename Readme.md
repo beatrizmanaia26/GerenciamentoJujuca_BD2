@@ -10,11 +10,11 @@
 ## 📘 Descrição do Projeto
 
 mermaid
-graph LR
-    S1 <--> S2
-    S2 <--> RDB
-    S2 <--> DB1
-    S2 <--> DB2
+graph LR <br>
+    S1 <--> S2<br>
+    S2 <--> RDB<br>
+    S2 <--> DB1<br>
+    S2 <--> DB2<br>
 
 
 O projeto *Gerenciamento Jujuca Bombonier* tem como objetivo desenvolver um sistema que facilite o controle de vendas, estoque e lucros da doceria Jujuca Bombonier, localizada na FEI.  
@@ -160,8 +160,8 @@ managementsystem/src/test/java/com/project/jujucabomboniermanegementsystem/manag
 
 caso de erro no MVN, instale-o com os seguintes comandos:
 <br>
-No terminal, execute:
-`mvn package
+No terminal, execute:<br>
+`mvn package<br>
 java -jar target/managementsystem-0.0.1-SNAPSHOT.jar`
 
 ou se estiver no VSCode:
@@ -173,9 +173,15 @@ mvn spring-boot:run
 ### 5. Como acessar e usar a aplicação
 
 O sistema é executado localmente e, por padrão, estará disponível em:
-👉 [http://localhost:8080](http://localhost:8080/)
+👉 [http://localhost:8080](http://localhost:8081/)
 
 Se estiver utilizando Codespaces do GitHub, será gerado um link público na plataforma com as portas 8080 ou 8081. O endereço aparece no início da execução do servidor.
+
+Após abrir a tela inicial pela primeira vezm ou seja, nenhum funcionário foi cadastrado, o projeto adiciona na tabela tb_seller um usuário adm por default<br>
+login: Admin@admi.com<br>
+senha: Admin<br>
+<img width="1380" height="428" alt="image" src="https://github.com/user-attachments/assets/d6d36ecf-0b81-4dcc-91b6-943a33e73988" /><br>
+
 
 #### Funcionalidades disponíveis na interface
 
