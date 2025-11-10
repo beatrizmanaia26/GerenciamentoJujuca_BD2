@@ -136,8 +136,11 @@ cd GerenciamentoJujuca_BD2
 
 #### Supabase (PostgreSQL)
 - Criar um novo projeto chamado ProjetoJujuca
-- Inserir as tabelas manualmente ou permitir que o Spring Boot gere automaticamente a partir das entidades Java.
-- Inserir as credenciais no arquivo application.properties.
+- Inserir as tabelas manualmente ou, como é feito por meio do código): permitir que o Spring Boot gere automaticamente a partir das entidades Java.
+- Inserir as credenciais no arquivo application.properties.<br>
+  -para isso, no "connect" doseu projeto altere o type para "JDBC" e o method para "session pooler", copiei a URL e coloque ela após spring.datasource.url= no application.properties, adicioando sua senha
+    <img width="1270" height="601" alt="image" src="https://github.com/user-attachments/assets/55243591-318a-43e6-b89c-7efc9d73f3c2" />
+
 
 #### MongoDB
 - Criar um cluster com:
