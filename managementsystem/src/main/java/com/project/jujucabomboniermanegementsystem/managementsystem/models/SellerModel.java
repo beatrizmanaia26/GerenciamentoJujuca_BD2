@@ -14,7 +14,7 @@ public class SellerModel implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO) // << gerador de id
     private UUID id_sales; // << id do seller
     private String password; // << senha da pessoa
-    private String email; // << email do seller
+    private String email;
     @ManyToOne // << identifica a chave estrangeira
     @JoinColumn(name = "cpf", referencedColumnName = "cpf") // << define como deve ser feita a relação
     private PeopleModel cpf; // << cpf do seller

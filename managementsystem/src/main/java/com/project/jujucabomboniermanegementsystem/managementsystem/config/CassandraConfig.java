@@ -1,18 +1,52 @@
 package com.project.jujucabomboniermanegementsystem.managementsystem.config;
+
 import com.datastax.oss.driver.api.core.CqlSession;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import java.nio.file.Paths;
+import org.springframework.core.io.ClassPathResource;
 
-//construtor da conexao com banco
-@Configuration//indicar que uma classe contém definições de beans
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+
+@Configuration
 public class CassandraConfig {
 
-@Bean //instrucoes p criar obj, instanciar, configurar e inicializar um objeto que deve ser gerenciado pelo Spring.
-public CqlSession cqlSession() {
-   return CqlSession.builder()
-      .withCloudSecureConnectBundle(Paths.get("src/main/resources/secure-connect-projetojujucacassandra.zip"))
-      .withAuthCredentials("tzbdbreAfYGyMcOhoOJyjjKf", "CZrr35w2GNIKcC3jCihj9I3454fiDHULHawjCdRU4TlmY4GQb.GU9NAhDx6Db81JKxLx,IcyJ4.JHMO0xJzgZt1vKl+yfzqmM-ZmAC0Z3HRDs0do3XoqBu3Jc78k9E5E")
-      .build();
-}
+    @Bean
+    public CqlSession cqlSession() {
+        try {
+            System.out.println("🔌 Configurando conexão com Cassandra...");
+
+            // Nome do seu bundle dentro de src/main/resources/
+            ClassPathResource resource = new ClassPathResource("secure-connect-history-transation.zip");
+
+            if (!resource.exists()) {
+                throw new IllegalStateException("❌ Arquivo secure-connect-projetojujucacassandra.zip não encontrado em resources/");
+            }
+
+            // Cria um arquivo temporário
+            Path tempFile = Files.createTempFile("cassandra-connect", ".zip");
+            try (InputStream inputStream = resource.getInputStream()) {
+                Files.copy(inputStream, tempFile, StandardCopyOption.REPLACE_EXISTING);
+            }
+
+            // Conecta ao AstraDB
+            CqlSession session = CqlSession.builder()
+                    .withCloudSecureConnectBundle(tempFile)
+                    .withAuthCredentials(
+                            "biHPspzZAAsAbEKhihNMddGR",  // CLIENT ID
+                            "LQSX.qRPBp9WNEzXcN3XKHACYo3.uniYjY4UdRsLYfFjaPIe6Af5-X6lbAz_xwTx30Wn8P4JcmGUnhG1FIAL6jgyussQf4s++,dm6ghO43YkLNhef6.iZCbokZmPb5yr" // CLIENT SECRET
+                    )
+                    .withKeyspace("history_transation") // coloque o nome exato do seu keyspace
+                    .build();
+
+            System.out.println("✅ Cassandra conectado e pronto para uso!");
+            return session;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("❌ Falha ao conectar com Cassandra: " + e.getMessage(), e);
+        }
+    }
 }

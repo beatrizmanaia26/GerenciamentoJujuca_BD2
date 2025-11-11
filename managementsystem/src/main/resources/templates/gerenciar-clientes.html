@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Clientes</title>
+    <link rel="stylesheet" th:href="@{/css/cadastrar-funcionario.css}">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+        .actions {
+            display: flex;
+            gap: 6px;
+        }
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-delete {
+            background: #dc2626;
+        }
+        .btn-delete:hover { background: #b91c1c; }
+    </style>
+</head>
+<body>
+<main class="page">
+    <header class="header">
+        <h2>Gerenciar Clientes</h2>
+        <a th:href="@{/area-funcionario}" class="btn" style="background:#fff;color:var(--text);border:1px solid var(--border);">Voltar</a>
+        <a href="/cadastrar-cliente" class="btn">+ Cadastrar Cliente</a>
+    </header>
+
+    <div th:if="${sucesso}" style="color:green" th:text="${sucesso}"></div>
+    <div th:if="${erro}" style="color:red" th:text="${erro}"></div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>CPF</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${clientes}">
+            <td th:text="${c.cpf.cpf}">CPF</td>
+            <td th:text="${c.cpf.nome}">Nome</td>
+            <td th:text="${c.cpf.email}">Email</td>
+            <td th:text="${c.cpf.telefone}">Telefone</td>
+            <td th:text="${c.cpf.endereco}">Endereço</td>
+            <td class="actions">
+                <a th:href="@{'/gerenciar-clientes/editar/' + ${c.id_client}}" class="btn">Editar</a>
+                <a th:href="@{'/gerenciar-clientes/excluir/' + ${c.id_client}}" class="btn btn-delete"
+                   onclick="return confirm('Tem certeza que deseja excluir este cliente?');">Excluir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

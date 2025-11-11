@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Área do Funcionário</title>
-    <link rel="stylesheet" th:href="@{/css/cadastrar-funcionario.css}">
+    <link rel="stylesheet" th:href="@{/css/area-funcionario.css}">
 </head>
     <body>
         <main class="page">
@@ -16,19 +16,24 @@
                     <a th:href="@{/logout}" class="btn">Sair</a>
                 </nav>
             </header>
-        
+
             <section class="card">
                 <div class="actions">
-                    <a th:href="@{/cadastrar-funcionario}" class="btn">Cadastrar Funcionário</a>
-                    <a th:href="@{/cadastrar-cliente}" class="btn">Cadastrar Cliente</a>
+                    <a th:href="@{/loja}" class="btn">Vender</a>
+                    <a th:href="@{/historico}" class="btn">Historico</a>
+                    <a th:href="@{/gerenciar-produtos}" class="btn">Gerenciar Produtos</a>
+                    <a th:href="@{/gerenciar-clientes}" class="btn">Gerenciar Clientes</a>
+                    <a th:href="@{/gerenciar-funcionarios}" class="btn">Gerenciar Funcionários</a>
+
+
                 </div>
             </section>
         </main>
-        
+
         <!-- Flash (RedirectAttributes) -->
         <div id="flash-sucesso" th:if="${sucesso}" th:data-msg="${sucesso}" hidden></div>
         <div id="flash-erro"    th:if="${erro}"    th:data-msg="${erro}" hidden></div>
-        
+
         <script>
             (function () {
                 var ok  = document.getElementById('flash-sucesso');

@@ -25,34 +25,29 @@ public class CadastroClienteController {
     }
 
 
-    @GetMapping("/cadastrar-cliente") // << Endpoint de cadastro do cliente
+    @GetMapping("/cadastrar-cliente")
     public String getCadastro(Model model) {
-        if (!model.containsAttribute("cliente")) { // << verifica se ja existe atributos para o objeto
-            model.addAttribute("cliente", new ClienteForm()); // << instancia a classe formulario para cadastro do cliente
+        if (!model.containsAttribute("cliente")) {
+            model.addAttribute("cliente", new ClienteForm());
         }
-        return "cadastrar-cliente"; // << Renderiza a pagina
+        return "cadastrar-cliente";
     }
 
-    @PostMapping("/cadastrar-cliente") // <<Endpoint para receber os dados com metodo post
+    @PostMapping("/cadastrar-cliente")
     public String postCadastro(@ModelAttribute("cliente") FuncionarioForm form,
                                BindingResult br,
-                               RedirectAttributes ra){ 
-        if (form.getCpf() == null || form.getCpf().isBlank() // << verifica se o campo foi preenchido
-                || form.getNome() == null || form.getNome().isBlank() // << verifica se o campo foi preenchido
-                || form.getEmail() == null || form.getEmail().isBlank() // << verifica se o campo foi preenchido
-                || form.getNumero() == null // << verifica se o campo foi preenchido
-                || form.getCep() == null || form.getCep().isBlank() // << verifica se o campo foi preenchido
-                || form.getComplemento() == null || form.getComplemento().isBlank() // << verifica se o campo foi preenchido
-                || form.getEndereco() == null || form.getEndereco().isBlank() // << verifica se o campo foi preenchido
-                || form.getTelefone() == null || form.getTelefone().isBlank()) {// << verifica se o campo foi preenchido
+                               RedirectAttributes ra){
+        if (form.getCpf() == null || form.getCpf().isBlank()
+                || form.getNome() == null || form.getNome().isBlank()
+                || form.getEmail() == null || form.getEmail().isBlank()) {
 
-            ra.addFlashAttribute("cliente", form); // << salva os campos preenchidos
+            ra.addFlashAttribute("cliente", form);
             ra.addFlashAttribute("org.springframework.validation.BindingResult.cliente", br);
-            ra.addFlashAttribute("erro", "Preencha todos os campos obrigatórios."); // << informa mensagem que o campo não foi preenchido
-            return "redirect:/cadastrar-cliente"; // << retorna para a pagina de cadastro
+            ra.addFlashAttribute("erro", "Preencha todos os campos obrigatórios.");
+            return "redirect:/cadastrar-cliente";
         }
         // CPF único
-        if (peopleRepository.existsByCpf(form.getCpf())) { // << Verifica se o cpf ja existe no banco
+        if (peopleRepository.existsByCpf(form.getCpf())) {
             ra.addFlashAttribute("cliente", form);
             ra.addFlashAttribute("org.springframework.validation.BindingResult.cliente", br);
             ra.addFlashAttribute("erro", "Já existe um cadastro com esse CPF.");
@@ -60,7 +55,7 @@ public class CadastroClienteController {
         }
 
         // E-mail único
-        var emailExistente = peopleRepository.findByEmail(form.getEmail()); // << verifica se o email ja existe 
+        var emailExistente = peopleRepository.findByEmail(form.getEmail());
         if (emailExistente.isPresent()) {
             ra.addFlashAttribute("cliente", form);
             ra.addFlashAttribute("org.springframework.validation.BindingResult.cliente", br);
@@ -68,8 +63,8 @@ public class CadastroClienteController {
             return "redirect:/cadastrar-cliente";
         }
 
-        PeopleModel people = new PeopleModel(); // << cria o objeto da classe people para salvar no banco
-        people.setCpf(form.getCpf()); 
+        PeopleModel people = new PeopleModel();
+        people.setCpf(form.getCpf());
         people.setNome(form.getNome());
         people.setEmail(form.getEmail());
         people.setCep(form.getCep());
@@ -77,12 +72,12 @@ public class CadastroClienteController {
         people.setEndereco(form.getEndereco());
         people.setTelefone(form.getTelefone());
         people.setNumero(form.getNumero());
-        PeopleModel pessoaSalva = peopleRepository.save(people); // << salva os dados no banco
+        PeopleModel pessoaSalva = peopleRepository.save(people);
 
-        ClientModel client = new ClientModel(); // << cria o objeto de cliente para salvar no banco
+        ClientModel client = new ClientModel();
         client.setCpf(pessoaSalva);
         client.setTelefone(pessoaSalva.getTelefone());
-        clientRepository.save(client); // << Salve os dados no banco
+        clientRepository.save(client);
 
         ra.addFlashAttribute("sucesso", "Cliente cadastrado com sucesso!"); // << Cria o FlashAttribute  para a mensagem de sucesso
         return "redirect:/cadastrar-cliente"; // << redireciona para a pagina de cadastro novamente
