@@ -135,9 +135,25 @@ cd GerenciamentoJujuca_BD2
 ### 3. Configurar os Bancos
 
 #### Supabase (PostgreSQL)
-- Criar um novo projeto chamado `ProjetoJujuca`
-- Inserir as tabelas manualmente ou permitir que o Spring Boot gere automaticamente a partir das entidades Java.
-- Inserir as credenciais no arquivo `application.properties`.
+- Passo 1 - Criar um novo projeto chamado `ProjetoJujuca`<br>
+  - Cliquem em **New Project** <br>
+  <img width="450" height="400" alt="passo 1 - supabase" src="https://github.com/user-attachments/assets/bac639ed-31ea-4729-8441-25d67dac2770" /><br>
+  - Preencha os campos com os dados solicitados (Obs. Armazene a senha criada, pois será utilizada posteriormente)<br>
+  <img width="450" height="400" alt="passo 2 - supabase" src="https://github.com/user-attachments/assets/fc553e87-a81b-4bc3-af62-e500df2dc00c" /><br>  
+- Passo 2 - Obtendo JDBC para conexão com o banco de dados <br>
+    - Clique em **Connect**<br>
+    <img width="450" height="400" alt="passo 3 - supabase" src="https://github.com/user-attachments/assets/ee3becc7-f705-431c-9d1f-93abd2956ab3" /><br>
+    - Em **type** coloque a opção **JDBC** e em **Method** selecione a opção **Session Pooler** <br>
+    <img width="450" height="400" alt="passo 4 - supabase" src="https://github.com/user-attachments/assets/fee9caa6-d5ab-4b5f-b9d4-7db38980430d" /><br>
+    - Copie a URL gerada.<br>
+- Passo 3 - Configurando a **application.properties** com a conexão do banco<br>
+    - Abra o arquivo **application.properties** <br>
+      <img width="450" height="400" alt="passo 5 - supabase" src="https://github.com/user-attachments/assets/9792d669-5cdf-4d79-b662-228eb6328a28" /><br>
+    - Cole a URL no campo demarcado<br>
+      <img width="650" height="600" alt="passo 6 - supabase" src="https://github.com/user-attachments/assets/a71b3278-f70e-4d76-a226-aa8e7bcf96a4" /><br>
+    - Troque pela senha criada no inicio da criação do banco de dados (Senha criada no passo 1)<br>
+      <img width="650" height="600" alt="passo 7 - supabase" src="https://github.com/user-attachments/assets/07d5ab21-bc40-4e55-9e91-35e4243dca70" /><br><br>
+**Banco de dados Supabase configurado!**<br>
 
 #### MongoDB
 - Criar um cluster com:
