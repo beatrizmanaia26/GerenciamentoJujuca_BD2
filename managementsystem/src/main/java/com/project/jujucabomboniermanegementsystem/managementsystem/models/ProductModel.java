@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //mapear tabelas para persistir no bd, tem anotacoes de bd)
-@Document(collection = "productDB")  //collection no mongo
+@Document(collection = "sua_collection")  //collection no mongo
 public class ProductModel {
 
     @Id

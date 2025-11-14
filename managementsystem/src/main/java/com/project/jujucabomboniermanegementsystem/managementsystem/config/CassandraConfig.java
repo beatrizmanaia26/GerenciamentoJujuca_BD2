@@ -19,7 +19,7 @@ public class CassandraConfig {
             System.out.println("🔌 Configurando conexão com Cassandra...");
 
             // Nome do seu bundle dentro de src/main/resources/
-            ClassPathResource resource = new ClassPathResource("secure-connect-history-transation.zip");
+            ClassPathResource resource = new ClassPathResource("seu zip secure connect");
 
             if (!resource.exists()) {
                 throw new IllegalStateException("❌ Arquivo secure-connect-projetojujucacassandra.zip não encontrado em resources/");
@@ -35,8 +35,8 @@ public class CassandraConfig {
             CqlSession session = CqlSession.builder()
                     .withCloudSecureConnectBundle(tempFile)
                     .withAuthCredentials(
-                            "biHPspzZAAsAbEKhihNMddGR",  // CLIENT ID
-                            "LQSX.qRPBp9WNEzXcN3XKHACYo3.uniYjY4UdRsLYfFjaPIe6Af5-X6lbAz_xwTx30Wn8P4JcmGUnhG1FIAL6jgyussQf4s++,dm6ghO43YkLNhef6.iZCbokZmPb5yr" // CLIENT SECRET
+                            "seu cliente id",  // CLIENT ID
+                            "seu cliente secret" // CLIENT SECRET
                     )
                     .withKeyspace("history_transation") // coloque o nome exato do seu keyspace
                     .build();
