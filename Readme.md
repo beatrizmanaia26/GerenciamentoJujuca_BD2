@@ -156,10 +156,31 @@ cd GerenciamentoJujuca_BD2
 **Banco de dados Supabase configurado!**<br>
 
 #### MongoDB
-- Criar um cluster com:
-  - **Database:** ProjetoJujucaMongo
-  - **Collection:** ProdutosJujuca
-- Adicionar o usuário e senha no `application.properties`.
+- Clique em criar um cluster:<br>
+      <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/aa2ec4d6-6873-4c7a-a1bb-e34cdefaa61f" /><br>
+- Crie o cluster com o nome **ProjetoJujuca** (armaze a senha criada) e clique em Create Database User<br>
+      <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/4c4f922b-90cc-4d16-9ea8-8383dcd53956" /><br>
+- Feche a aba que ira abrir e clique em Cluster<br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/eb8a80e2-1df7-4367-bf2e-7246d64d2ed0" /><br>
+- Aperte em seu cluster <br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/47d18fe2-7cc3-4f6c-ba4e-9e6dd2738672" /><br>
+- Cliquem em Connect e depois em Driver <br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/ca68848a-8275-467e-8dd8-c08089d4175c" /><br>
+    - Em driver mude para Java, e mantenha a versão.<br>
+    - Copie a URL gerada abaixo<br>
+- Apos copiar a URL , feche a aba e clique em **Data Explorer** ao lado esquerdo da pagina<br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/ca10901a-2e9c-44c7-876e-41ba3bd781ea" /><br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/3db3b2bc-8fcd-48c1-900a-87b4ad9bfa09" /><br>
+    - Crie o preencha o Database nome e Collection name com **projeto_jujuca** 
+- Agora abra o seu projeto Java e vá no arquivo **application.properties**<br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/ebfd033b-0706-47eb-8300-e2f5a2e3c15b" /><br>
+    - Cole sua URL no campo **spring.data.mongodb.uri**<br>
+    - Coloque sua senha no campo **<db_password>**<br>
+    - Pós o **@projetojujuca.rc9u8bh.mongodb.net/** antes da **?** coloque o nome da Collection **projeto_jujuca**<br>
+- Abra o arquivo **ProductModel** localizado na pasta **models** do projeto<br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/f0115ea6-7199-4ac1-83c2-a67316ad8dd4" />
+    - Mude o nome da Collection para **projeto_jujuca**.
+- Banco Configurado.<br>
 
 #### Cassandra
 - Criar o database `ProjetoJujucaCassandra`
