@@ -193,6 +193,8 @@ cd GerenciamentoJujuca_BD2
     <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/9524f839-5548-4a64-adc2-a008fb447ee7" /><br>
     - Copie os campos **clientId** e **secret**<br>
     <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/75a8519b-9886-4b0d-a73d-0ed38ef0d914" /><br>
+    -	Por prevenção, faça o download do token detais e cole na pasta “resources” <br>
+    ![<imagen do token>](image.png)<br>
     - Após feche a aba e clique em **Get Bundle**<br>
     - Selecioone os campos e depois baixe o arquivo<br>
     <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/96d1f837-301d-49fa-a3f5-86bc958acde9" /><br>
