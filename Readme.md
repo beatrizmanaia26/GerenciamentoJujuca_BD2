@@ -179,13 +179,35 @@ cd GerenciamentoJujuca_BD2
     - Pós o **@projetojujuca.rc9u8bh.mongodb.net/** antes da **?** coloque o nome da Collection **projeto_jujuca**<br>
 - Abra o arquivo **ProductModel** localizado na pasta **models** do projeto<br>
     <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/f0115ea6-7199-4ac1-83c2-a67316ad8dd4" />
-    - Mude o nome da Collection para **projeto_jujuca**.
+    - Mude o nome da Collection para **projeto_jujuca**.<br>
 - Banco Configurado.<br>
 
 #### Cassandra
-- Criar o database `ProjetoJujucaCassandra`
-- Baixar o *secure connect bundle* e o token de acesso
-- Adicionar o caminho e credenciais no arquivo `cassandraConfig.java`
+- Criar o database `ProjetoJujucaCassandra`<br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/7bb5c1f2-c3dd-487c-8656-caabd3111c6c" /><br>
+    - Preencha os campos com os dados a seguir<br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/1600b847-f9b1-482b-bdc3-18e297c2cd08" /><br>
+- Após o banco ser iniciado, vá em **Connect**<br>
+    <img width="450" height="394006" alt="image" src="https://github.com/user-attachments/assets/8a32e1f8-ce4f-4550-b417-30ec5959cf1b" /><br>
+    - Clique em **Generate Database Tokens** <br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/9524f839-5548-4a64-adc2-a008fb447ee7" /><br>
+    - Copie os campos **clientId** e **secret**<br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/75a8519b-9886-4b0d-a73d-0ed38ef0d914" /><br>
+    - Após feche a aba e clique em **Get Bundle**<br>
+    - Selecioone os campos e depois baixe o arquivo<br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/96d1f837-301d-49fa-a3f5-86bc958acde9" /><br>
+- Agora, abra o projeto e va na pasta **resources** e cole o arquivo **secure-connect-projetojujucacassandra.zip** na pasta.<br>
+- Vá na pasta java/config/ e abra o arquivo **CassandraConfig.Java**<br>
+    - Cole o caminho do arquivo **secure-connect-projetojujucacassandra.zip** na variavel **ClassPathResource resource**<br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/f4604c35-4d67-4e0a-a4ed-6ecbaddc1bf8" /><br>
+    - Em seguida no campo **CqlSession session** preencha os campos com o **clientId e secret** gerados do token<br>
+- Agora volte no Astra Database e vá na aba CQL Console<br>
+    - No CQL console escreva o seguinte comando **use history_transation;**<br>
+    - Em seguida no projeto, na pasta resourses, abra o arquivo **Create_table_cassandra.txt** e copie o primeiro codigo e cole no CQL Console.<br>
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/db7a1b74-df5a-40bb-bbfd-49474052cb55" /><br>
+    - Em seguida, execute o segundo codigo.
+    <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/2cde367a-c29d-443c-bc77-21d10c40b596" />
+- Banco Astra Cassandra configurado.
 
 ---
 
