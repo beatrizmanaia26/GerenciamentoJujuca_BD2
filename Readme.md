@@ -188,7 +188,7 @@ cd GerenciamentoJujuca_BD2
     - Preencha os campos com os dados a seguir<br>
     <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/1600b847-f9b1-482b-bdc3-18e297c2cd08" /><br>
 - Após o banco ser iniciado, vá em **Connect**<br>
-    <img width="450" height="394006" alt="image" src="https://github.com/user-attachments/assets/8a32e1f8-ce4f-4550-b417-30ec5959cf1b" /><br>
+    <img width="60%" alt="passo 4 - supabase" src="https://github.com/user-attachments/assets/8a32e1f8-ce4f-4550-b417-30ec5959cf1b" /><br>
     - Clique em **Generate Database Tokens** <br>
     <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/9524f839-5548-4a64-adc2-a008fb447ee7" /><br>
     - Copie os campos **clientId** e **secret**<br>
