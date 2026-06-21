@@ -150,9 +150,9 @@ cd GerenciamentoJujuca_BD2
     - Abra o arquivo **application.properties** <br>
       <img width="450" height="400" alt="passo 5 - supabase" src="https://github.com/user-attachments/assets/9792d669-5cdf-4d79-b662-228eb6328a28" /><br>
     - Cole a URL no campo demarcado<br>
-      <img width="650" height="600" alt="passo 6 - supabase" src="https://github.com/user-attachments/assets/a71b3278-f70e-4d76-a226-aa8e7bcf96a4" /><br>
+      <img width="80%" alt="passo 6 - supabase" src="https://github.com/user-attachments/assets/a71b3278-f70e-4d76-a226-aa8e7bcf96a4" /><br>
     - Troque pela senha criada no inicio da criação do banco de dados (Senha criada no passo 1)<br>
-      <img width="650" height="600" alt="passo 7 - supabase" src="https://github.com/user-attachments/assets/07d5ab21-bc40-4e55-9e91-35e4243dca70" /><br><br>
+      <img width="80%" alt="passo 7 - supabase" src="https://github.com/user-attachments/assets/07d5ab21-bc40-4e55-9e91-35e4243dca70" /><br>
 **Banco de dados Supabase configurado!**<br>
 
 #### MongoDB
